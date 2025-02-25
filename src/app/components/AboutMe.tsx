@@ -5,7 +5,7 @@ export default function AboutMe() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white"
+      className="min-h-screen flex flex-col items-center justify-center bg-gray-800 text-white"
     >
       <motion.img
         src="/foto_provisional.jpeg" // Cambia esto por el nombre de tu archivo
