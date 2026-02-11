@@ -4,7 +4,11 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx}", // Escanea todos los archivos en src/app
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
+      },
+    },
   },
   plugins: [require("flyonui")],
 };

@@ -1,34 +1,51 @@
-"use client"
-import { motion } from "framer-motion";
-
 export default function AboutMe() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col items-center justify-center bg-gray-800 text-white"
+      className="relative px-6 pt-28 pb-20"
     >
-      <motion.img
-        src="/foto_provisional.jpeg" // Cambia esto por el nombre de tu archivo
-        alt="Mi Foto"
-        className="w-40 h-40 rounded-full border-4 border-gray-700 shadow-lg hover:scale-105 transition-transform duration-300"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-    />
-
-      <motion.div
-        className="mt-6 text-center max-w-xl"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 1 }}
-      >
-        <h1 className="text-4xl font-bold">¡Hola! Soy David</h1>
-        <p className="mt-4 text-gray-400">
-          Soy un ingeniero informático apasionado por el desarrollo de software,
-          la innovación tecnológica y las soluciones creativas. ¡Encantado de
-          que estés aquí!
-        </p>
-      </motion.div>
+      <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[320px,1fr]">
+        <div className="mx-auto h-56 w-56 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow)] md:mx-0 md:h-64 md:w-64">
+          <img
+            src="/yo.png"
+            alt="Mi Foto"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="text-center md:text-left">
+          <p className="text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
+            Sobre mí
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
+            Hola, soy David Reyes. Ingeniero de software con mirada de sistemas.
+          </h2>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-[var(--muted)]">
+            He trabajado como desarrollador full stack, pero mi perfil es mas amplio: estoy cursando el master en
+            Ciencia y Tecnologia Informatica y mi TFM lo oriento a Ingenieria de sistemas. Me gusta pensar soluciones
+            a gran escala de forma pragmatica, sin perder el foco en lo que realmente aporta valor.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-2 md:justify-start">
+            <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+              Ingenieria
+            </span>
+            <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+              Arquitectura
+            </span>
+            <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+              Sistemas
+            </span>
+            <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+              Fullstack
+            </span>
+            <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+              Ciencias de computacion
+            </span>
+            <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+              Inteligencia artificial
+            </span>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
