@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 
 const Timeline = () => {
@@ -29,9 +28,11 @@ const Timeline = () => {
                 ciencias. 
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <img
+                <Image
                   src="/salesianos.jpg"
                   alt="timeline Image"
+                  width={80}
+                  height={80}
                   className="w-20 rounded border border-[var(--border)]"
                 />
               </div>
@@ -70,9 +71,11 @@ const Timeline = () => {
                 Empieza una nueva etapa que permite aprender y desarrollar mi pasión por la informática.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <img
+                <Image
                   src="/us.png"
                   alt="timeline Image"
+                  width={80}
+                  height={80}
                   className="w-20 rounded border border-[var(--border)]"
                 />
               </div>
@@ -116,9 +119,11 @@ const Timeline = () => {
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center">
-                <img
+                <Image
                   src="/logo-axion.svg"
                   alt="timeline Image"
+                  width={80}
+                  height={80}
                   className="w-20 rounded border border-[var(--border)]"
                 />
               </div>
@@ -193,9 +198,11 @@ const Timeline = () => {
                 tecnologia informatica. <span className="text-[var(--muted)]">En curso.</span>
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <img
+                <Image
                   src="/uc3m.png"
                   alt="Logo UC3M"
+                  width={80}
+                  height={80}
                   className="w-20 rounded border border-[var(--border)]"
                 />
               </div>

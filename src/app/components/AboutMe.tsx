@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AboutMe() {
   return (
     <section
@@ -6,9 +8,11 @@ export default function AboutMe() {
     >
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[320px,1fr]">
         <div className="mx-auto h-56 w-56 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow)] md:mx-0 md:h-64 md:w-64">
-          <img
+          <Image
             src="/yo.png"
             alt="Mi Foto"
+            width={256}
+            height={256}
             className="h-full w-full object-cover"
           />
         </div>
