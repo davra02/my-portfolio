@@ -73,21 +73,21 @@ export default async function Home() {
       {/* Contenedor del contenido con un padding-top para compensar la navbar */}
       <div className="relative z-10 min-h-screen pt-20">
         <AboutMe />
-        <section id="timeline" className="mx-auto mt-16 max-w-6xl px-6">
-          <div className="flex items-center justify-between">
+        <section id="timeline" className="mx-auto mt-12 max-w-6xl px-4 sm:mt-16 sm:px-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-semibold">Mi carrera</h2>
-            <span className="h-px flex-1 bg-[var(--border)] ml-6" />
+            <span className="hidden h-px flex-1 bg-[var(--border)] sm:block sm:ml-6" />
           </div>
-          <div className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6">
+          <div className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:mt-8 sm:p-6">
             <Timeline />
           </div>
         </section>
-        <section id="projects" className="mx-auto mt-16 max-w-6xl px-6">
-          <div className="flex items-center justify-between">
+        <section id="projects" className="mx-auto mt-12 max-w-6xl px-4 sm:mt-16 sm:px-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-semibold">Proyectos</h2>
-            <span className="h-px flex-1 bg-[var(--border)] ml-6" />
+            <span className="hidden h-px flex-1 bg-[var(--border)] sm:block sm:ml-6" />
           </div>
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {combinedProjects.length > 0 ? (
               combinedProjects.map((project) => (
                 <ProjectCard
@@ -113,12 +113,12 @@ export default async function Home() {
             )}
           </div>
         </section>
-        <section id="contact" className="mx-auto mt-16 max-w-6xl px-6">
-          <div className="flex items-center justify-between">
+        <section id="contact" className="mx-auto mt-12 max-w-6xl px-4 sm:mt-16 sm:px-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-semibold">Contacto</h2>
-            <span className="h-px flex-1 bg-[var(--border)] ml-6" />
+            <span className="hidden h-px flex-1 bg-[var(--border)] sm:block sm:ml-6" />
           </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
             <a
               href="https://www.linkedin.com/in/david-reyes-al%C3%A9s-465264305"
               target="_blank"
@@ -206,7 +206,7 @@ export default async function Home() {
             </a>
           </div>
         </section>
-        <footer className="mx-auto mt-20 max-w-6xl px-6 pb-10 text-sm text-[var(--muted)]">
+        <footer className="mx-auto mt-16 max-w-6xl px-4 pb-10 text-sm text-[var(--muted)] sm:mt-20 sm:px-6">
           © 2025 - Mi Portfolio
         </footer>
       </div>

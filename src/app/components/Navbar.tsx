@@ -31,12 +31,12 @@ export default function Navbar() {
 
   return (
     <nav className="border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <h1 className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text)]">
+      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <h1 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text)] sm:text-sm sm:tracking-[0.2em]">
           David Reyes
         </h1>
-        <div className="flex items-center gap-6 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-          <ul className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] sm:gap-6 sm:text-xs sm:tracking-[0.2em]">
+          <ul className="flex flex-wrap items-center gap-3 sm:gap-6">
             <li>
               <a href="#about" className="transition-colors hover:text-[var(--text)]">
                 Sobre mí
