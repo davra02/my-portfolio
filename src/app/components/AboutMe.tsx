@@ -21,7 +21,7 @@ export default function AboutMe() {
             Sobre mí
           </p>
           <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl">
-            Hola, soy David Reyes. Ingeniero de software con mirada de sistemas.
+            Hola, soy David Reyes. Ingeniero de software con proyección hacia sistemas.
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--muted)] sm:mt-5 sm:text-base">
             He trabajado como desarrollador full stack, pero mi perfil es mas amplio: estoy cursando el master en
