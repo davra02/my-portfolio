@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   title: "davidreyesales",
   description: "Portfolio de David Reyes Ales",
   icons: {
-    icon: "/personal_logo.png",
-    shortcut: "/personal_logo.png",
-    apple: "/personal_logo.png",
+    icon: "/simple_logo_favicon.png",
+    shortcut: "/simple_logo_favicon.png",
+    apple: "/simple_logo_favicon.png",
   },
 };
 
