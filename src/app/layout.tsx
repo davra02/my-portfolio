@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "davidreyesales",
   description: "Portfolio de David Reyes Ales",
+  icons: {
+    icon: "/personal_logo.png",
+    shortcut: "/personal_logo.png",
+    apple: "/personal_logo.png",
+  },
 };
 
 export default function RootLayout({

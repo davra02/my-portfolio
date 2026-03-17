@@ -52,11 +52,6 @@ export default function Navbar() {
                 Proyectos
               </a>
             </li>
-            <li>
-              <a href="#contact" className="transition-colors hover:text-[var(--text)]">
-                Contacto
-              </a>
-            </li>
           </ul>
           <button
             type="button"
