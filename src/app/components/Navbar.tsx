@@ -4,8 +4,13 @@ import React, { useEffect, useState } from "react";
 
 const THEME_STORAGE_KEY = "theme";
 type ThemeMode = "light" | "dark";
+type Lang = "es" | "en";
 
-export default function Navbar() {
+interface NavbarProps {
+  lang: Lang;
+}
+
+export default function Navbar({ lang }: NavbarProps) {
   const [theme, setTheme] = useState<ThemeMode | null>(null);
 
   useEffect(() => {
@@ -29,6 +34,26 @@ export default function Navbar() {
     document.documentElement.setAttribute("data-theme", nextTheme);
   };
 
+  const labels =
+    lang === "en"
+      ? {
+          about: "About",
+          career: "Career",
+          projects: "Projects",
+          theme: "Toggle color mode",
+        }
+      : {
+          about: "Sobre mi",
+          career: "Mi carrera",
+          projects: "Proyectos",
+          theme: "Cambiar modo de color",
+        };
+
+  const languageOptions = [
+    { code: "es" as const, href: "/", label: "ES" },
+    { code: "en" as const, href: "/?lang=en", label: "EN" },
+  ];
+
   return (
     <nav className="border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
@@ -39,25 +64,45 @@ export default function Navbar() {
           <ul className="flex flex-wrap items-center gap-3 sm:gap-6">
             <li>
               <a href="#about" className="transition-colors hover:text-[var(--text)]">
-                Sobre mí
+                {labels.about}
               </a>
             </li>
             <li>
               <a href="#timeline" className="transition-colors hover:text-[var(--text)]">
-                Mi carrera
+                {labels.career}
               </a>
             </li>
             <li>
               <a href="#projects" className="transition-colors hover:text-[var(--text)]">
-                Proyectos
+                {labels.projects}
               </a>
             </li>
           </ul>
+          <div className="flex items-center gap-1 rounded-full border border-[var(--border)] p-0.5">
+            {languageOptions.map((option) => {
+              const isActive = option.code === lang;
+
+              return (
+                <a
+                  key={option.code}
+                  href={option.href}
+                  aria-label={option.code === "en" ? "English version" : "Version en espanol"}
+                  className={`rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-[0.14em] transition-colors ${
+                    isActive
+                      ? "bg-[var(--surface-strong)] text-[var(--text)]"
+                      : "text-[var(--muted)] hover:text-[var(--text)]"
+                  }`}
+                >
+                  {option.label}
+                </a>
+              );
+            })}
+          </div>
           <button
             type="button"
             onClick={handleToggleTheme}
             className="flex items-center justify-center rounded-full border border-[var(--border)] p-2 text-[var(--muted)] transition-colors hover:text-[var(--text)]"
-            aria-label="Cambiar modo de color"
+            aria-label={labels.theme}
           >
             {theme === "dark" ? (
               <svg

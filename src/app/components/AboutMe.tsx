@@ -1,6 +1,53 @@
 import Image from "next/image";
 
-export default function AboutMe() {
+type Lang = "es" | "en";
+
+interface AboutMeProps {
+  lang: Lang;
+}
+
+export default function AboutMe({ lang }: AboutMeProps) {
+  const copy =
+    lang === "en"
+      ? {
+          section: "About Me",
+          title: "Hi, I am David Reyes. Software Engineer focused on backend and distributed systems.",
+          description:
+            "I have experience building real-time applications and backend services for operational environments. I am currently pursuing my MSc in Computer Science and Technology at UC3M and I also work as a research assistant on software systems developed as part of my master's thesis. I am especially interested in observability, infrastructure and data platforms.",
+          tags: [
+            "Backend",
+            "Distributed systems",
+            "Observability",
+            "Data platforms",
+            "Software architecture",
+            "Real-time",
+          ],
+          location: "Madrid, Spain",
+          linkedin: "LinkedIn",
+          email: "Email",
+          instagram: "Instagram",
+          github: "GitHub",
+        }
+      : {
+          section: "Sobre mi",
+          title: "Hola, soy David Reyes. Software Engineer enfocado en backend y sistemas distribuidos.",
+          description:
+            "Tengo experiencia construyendo aplicaciones en tiempo real y servicios backend para entornos operativos. Actualmente curso el master en Ciencia y Tecnologia Informatica en UC3M y participo como asistente de investigacion en desarrollos aplicados al TFM. Me interesan la observabilidad, la infraestructura y las plataformas de datos.",
+          tags: [
+            "Backend",
+            "Sistemas distribuidos",
+            "Observabilidad",
+            "Plataformas de datos",
+            "Arquitectura de software",
+            "Tiempo real",
+          ],
+          location: "Madrid, Espana",
+          linkedin: "LinkedIn",
+          email: "Email",
+          instagram: "Instagram",
+          github: "GitHub",
+        };
+
   return (
     <section
       id="about"
@@ -27,24 +74,37 @@ export default function AboutMe() {
         </div>
         <div className="text-center md:text-left">
           <p className="text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
-            Sobre mí
+            {copy.section}
           </p>
           <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl">
-            Hola, soy David Reyes. Software Engineer enfocado en backend y sistemas distribuidos.
+            {copy.title}
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--muted)] sm:mt-5 sm:text-base">
-            Tengo experiencia construyendo aplicaciones en tiempo real y servicios backend para entornos operativos.
-            Actualmente curso el master en Ciencia y Tecnologia Informatica en UC3M y participo como asistente de
-            investigacion en desarrollos aplicados al TFM. Me interesan la observabilidad, la infraestructura y las
-            plataformas de datos.
+            {copy.description}
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-xs text-[var(--muted)] sm:text-sm">
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className="h-4 w-4 text-[var(--accent)]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z" />
+              <circle cx="12" cy="11" r="2.2" />
+            </svg>
+            <span>{copy.location}</span>
+          </div>
           <div className="mt-6 flex flex-wrap justify-center gap-4 md:justify-start">
             <a
               href="https://www.linkedin.com/in/david-reyes-al%C3%A9s-465264305"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              title="LinkedIn"
+              aria-label={copy.linkedin}
+              title={copy.linkedin}
               className="flex h-14 w-14 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--card-hover-shadow)] hover:border-[var(--card-hover-border)]"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -56,8 +116,8 @@ export default function AboutMe() {
             </a>
             <a
               href="mailto:davidreyesales@gmail.com"
-              aria-label="Email"
-              title="Email"
+              aria-label={copy.email}
+              title={copy.email}
               className="flex h-14 w-14 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--card-hover-shadow)] hover:border-[var(--card-hover-border)]"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -69,8 +129,8 @@ export default function AboutMe() {
               href="https://instagram.com/david_ra02"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
-              title="Instagram"
+              aria-label={copy.instagram}
+              title={copy.instagram}
               className="flex h-14 w-14 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--card-hover-shadow)] hover:border-[var(--card-hover-border)]"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -83,8 +143,8 @@ export default function AboutMe() {
               href="https://github.com/davra02"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
-              title="GitHub"
+              aria-label={copy.github}
+              title={copy.github}
               className="flex h-14 w-14 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--card-hover-shadow)] hover:border-[var(--card-hover-border)]"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -94,22 +154,22 @@ export default function AboutMe() {
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-2 md:justify-start">
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-              Backend
+              {copy.tags[0]}
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-              Sistemas distribuidos
+              {copy.tags[1]}
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-              Observabilidad
+              {copy.tags[2]}
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] sm:text-xs sm:tracking-[0.2em]">
-              Plataformas de datos
+              {copy.tags[3]}
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] sm:text-xs sm:tracking-[0.2em]">
-              Arquitectura de software
+              {copy.tags[4]}
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] sm:text-xs sm:tracking-[0.2em]">
-              Tiempo real
+              {copy.tags[5]}
             </span>
           </div>
         </div>

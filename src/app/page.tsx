@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import AboutMe from "./components/AboutMe";
 import Timeline from "./components/TimeLine";
 
+type Lang = "es" | "en";
+
 type GithubRepo = {
   name: string;
   description: string | null;
@@ -15,10 +17,17 @@ type GithubRepo = {
 const GITHUB_USER = "davra02";
 const FEATURED_ORG = "Whispy-Decentralized-chat-application";
 const FEATURED_REPO = "Whispy-Client";
-const FEATURED_DESCRIPTION =
+const FEATURED_DESCRIPTION_ES =
   "Aplicacion social de mensajeria descentralizada con Ceramic Network. " +
   "Cifrado extremo a extremo en mensajes privados y uso de blockchain para ciertas funciones.";
+const FEATURED_DESCRIPTION_EN =
+  "Decentralized social messaging app built on Ceramic Network. " +
+  "End-to-end encryption for private messages and blockchain-backed features.";
 const PROJECT_LIMIT = 6;
+
+type HomeProps = {
+  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+};
 
 async function getFeaturedProject(): Promise<GithubRepo | null> {
   const response = await fetch(
@@ -52,7 +61,33 @@ async function getGithubProjects(): Promise<GithubRepo[]> {
   return repos.filter((repo) => !repo.fork).slice(0, PROJECT_LIMIT);
 }
 
-export default async function Home() {
+export default async function Home({ searchParams }: HomeProps) {
+  const resolvedSearchParams = await Promise.resolve(searchParams ?? {});
+  const lang: Lang = resolvedSearchParams.lang === "en" ? "en" : "es";
+
+  const text =
+    lang === "en"
+      ? {
+          career: "My Career",
+          projects: "Projects",
+          featuredDescription: FEATURED_DESCRIPTION_EN,
+          noDescription: "No description",
+          featuredBadge: "Featured",
+          fallbackTitle: "GitHub Projects",
+          fallbackDescription: "Repositories could not be loaded. Please try again later.",
+          footer: "David Reyes Alés",
+        }
+      : {
+          career: "Mi carrera",
+          projects: "Proyectos",
+          featuredDescription: FEATURED_DESCRIPTION_ES,
+          noDescription: "Sin descripcion",
+          featuredBadge: "Destacado",
+          fallbackTitle: "Proyectos en GitHub",
+          fallbackDescription: "No se pudieron cargar los repositorios. Intentalo mas tarde.",
+          footer: "Mi Portfolio",
+        };
+
   const [featuredProject, projects] = await Promise.all([
     getFeaturedProject(),
     getGithubProjects(),
@@ -67,24 +102,27 @@ export default async function Home() {
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
       {/* Navbar siempre visible */}
       <div className="fixed top-0 left-0 w-full z-50">
-        <Navbar />
+        <Navbar lang={lang} />
       </div>
 
       {/* Contenedor del contenido con un padding-top para compensar la navbar */}
       <div className="relative z-10 min-h-screen pt-20">
-        <AboutMe />
+        <AboutMe lang={lang} />
         <section id="timeline" className="mx-auto mt-12 max-w-6xl px-4 sm:mt-16 sm:px-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-2xl font-semibold">Mi carrera</h2>
+            <h2 className="text-2xl font-semibold">{text.career}</h2>
             <span className="hidden h-px flex-1 bg-[var(--border)] sm:block sm:ml-6" />
           </div>
-          <div className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:mt-8 sm:p-6">
-            <Timeline />
+          <div
+            className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:mt-8 sm:p-6"
+            style={{ paddingLeft: "50px" }}
+          >
+            <Timeline lang={lang} />
           </div>
         </section>
         <section id="projects" className="mx-auto mt-12 max-w-6xl px-4 sm:mt-16 sm:px-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-2xl font-semibold">Proyectos</h2>
+            <h2 className="text-2xl font-semibold">{text.projects}</h2>
             <span className="hidden h-px flex-1 bg-[var(--border)] sm:block sm:ml-6" />
           </div>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -95,18 +133,18 @@ export default async function Home() {
                   title={project.name}
                   description={
                     project.name === FEATURED_REPO
-                      ? FEATURED_DESCRIPTION
-                      : project.description ?? "Sin descripcion"
+                      ? text.featuredDescription
+                      : project.description ?? text.noDescription
                   }
                   image={null}
                   link={project.html_url}
-                  badge={project.name === FEATURED_REPO ? "Destacado" : null}
+                  badge={project.name === FEATURED_REPO ? text.featuredBadge : null}
                 />
               ))
             ) : (
               <ProjectCard
-                title={"Proyectos en GitHub"}
-                description={"No se pudieron cargar los repositorios. Intentalo mas tarde."}
+                title={text.fallbackTitle}
+                description={text.fallbackDescription}
                 image={null}
                 link={`https://github.com/${GITHUB_USER}`}
               />
@@ -114,7 +152,7 @@ export default async function Home() {
           </div>
         </section>
         <footer className="mx-auto mt-16 max-w-6xl px-4 pb-10 text-sm text-[var(--muted)] sm:mt-20 sm:px-6">
-          © 2025 - Mi Portfolio
+          © 2026 - {text.footer}
         </footer>
       </div>
     </div>

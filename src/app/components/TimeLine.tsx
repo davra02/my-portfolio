@@ -1,6 +1,107 @@
 import Image from "next/image";
 
-const Timeline = () => {
+type Lang = "es" | "en";
+
+interface TimelineProps {
+  lang: Lang;
+}
+
+const Timeline = ({ lang }: TimelineProps) => {
+  const t =
+    lang === "en"
+      ? {
+          stack: "Role stack",
+          inProgress: "In progress.",
+          universitySite: "University website",
+          companySite: "Company website",
+          schoolSite: "School website",
+          projects: "Go to projects",
+          research: {
+            date: "2026 - Present",
+            title: "Research Assistant - Universidad Carlos III de Madrid",
+            description:
+              "I develop software systems and prototypes related to my MSc thesis in collaboration with industry, focused on data platforms and distributed systems.",
+          },
+          msc: {
+            date: "September, 2025",
+            title: "MSc in Computer Science and Technology - UC3M",
+            description:
+              "I started my MSc at Universidad Carlos III de Madrid, focused on computer science and technology.",
+          },
+          degree: {
+            date: "July, 2025",
+            title:
+              "Completion of university studies: Computer Engineering, Software Engineering - Universidad de Sevilla",
+            description:
+              "I completed my university studies at Universidad de Sevilla with the goal of continuing to grow in the software industry. During this period I contributed to and developed projects worth highlighting:",
+          },
+          axion: {
+            date: "September, 2023 - December, 2025",
+            title: "Full-Stack Developer - Axion",
+            description:
+              "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure. I designed REST APIs and backend services for asset and incident management, and I built map-based operational dashboards.",
+          },
+          startUni: {
+            date: "September, 2020",
+            title:
+              "Start of university studies: Computer Engineering, Software Engineering - Universidad de Sevilla",
+            description:
+              "A new stage began where I could learn and further develop my passion for software engineering.",
+          },
+          highSchool: {
+            date: "July, 2019",
+            title: "Science Baccalaureate - Salesianos Stma. Trinidad",
+            description:
+              "I completed my pre-university studies at Salesianos Stma. Trinidad in the science track.",
+          },
+        }
+      : {
+          stack: "Stack del rol",
+          inProgress: "En curso.",
+          universitySite: "Web de la universidad",
+          companySite: "Web de la empresa",
+          schoolSite: "Web del centro",
+          projects: "Ir a mis proyectos",
+          research: {
+            date: "2026 - Actualidad",
+            title: "Asistente de investigacion - Universidad Carlos III de Madrid",
+            description:
+              "Desarrollo sistemas y prototipos de software aplicados a mi TFM en colaboracion con industria, con foco en plataformas de datos y sistemas distribuidos.",
+          },
+          msc: {
+            date: "Septiembre, 2025",
+            title: "Master en Ciencia y Tecnologia Informatica - UC3M",
+            description:
+              "Inicio el master en la Universidad Carlos III de Madrid, enfocado en ciencia y tecnologia informatica.",
+          },
+          degree: {
+            date: "Julio, 2025",
+            title:
+              "Finalizacion de estudios universitarios: Ingenieria Informatica, Ingenieria del Software - Universidad de Sevilla",
+            description:
+              "Finalizo mis estudios universitarios en la Universidad de Sevilla, con la intencion de seguir creciendo y desarrollando mis habilidades en el mundo laboral. En esta etapa he contribuido y/o desarrollado proyectos que me gustaria destacar:",
+          },
+          axion: {
+            date: "Septiembre, 2023 - Diciembre, 2025",
+            title: "Full-Stack Developer - Axion",
+            description:
+              "Trabaje en una plataforma de monitorizacion en tiempo real para infraestructura de radiodifusion a nivel nacional. Disene APIs REST y servicios backend para gestion de activos e incidencias, y construi dashboards operativos con visualizacion en mapa.",
+          },
+          startUni: {
+            date: "Septiembre, 2020",
+            title:
+              "Comienzo de estudios universitarios: Ingenieria Informatica, Ingenieria del Software - Universidad de Sevilla",
+            description:
+              "Empieza una nueva etapa que permite aprender y desarrollar mi pasion por la informatica.",
+          },
+          highSchool: {
+            date: "Julio, 2019",
+            title: "Bachillerato de ciencias - Salesianos Stma. Trinidad",
+            description:
+              "Acabo mis estudios pre-grado en el centro Salesianos Stma. Trinidad, en la rama de ciencias.",
+          },
+        };
+
   return (
 
         
@@ -13,20 +114,17 @@ const Timeline = () => {
           </span>
         </div>
         <div className="timeline-end mt-6 px-1 md:mt-8">
-          <div className="text-sm font-normal text-[var(--muted)]">2026 - Actualidad</div>
+          <div className="text-sm font-normal text-[var(--muted)]">{t.research.date}</div>
         </div>
-        <div className="timeline-start me-4 mb-8 w-full">
+        <div className="timeline-start ms-4 me-4 mb-8 w-full">
           <div className="card border border-[var(--border)] bg-[var(--surface)]">
             <div className="card-body gap-4">
-              <h5 className="card-title text-lg">
-                Asistente de investigacion - Universidad Carlos III de Madrid
-              </h5>
+              <h5 className="card-title text-lg">{t.research.title}</h5>
               <p>
-                Desarrollo sistemas y prototipos de software aplicados a mi TFM en colaboracion con
-                industria, con foco en plataformas de datos y sistemas distribuidos. <span className="text-[var(--muted)]">En curso.</span>
+                {t.research.description} <span className="text-[var(--muted)]">{t.inProgress}</span>
               </p>
               <div className="space-y-2">
-                <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">Stack del rol</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">{t.stack}</p>
                 <div className="flex flex-wrap gap-2">
                   <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">React</span>
                   <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">Next.js</span>
@@ -42,7 +140,7 @@ const Timeline = () => {
                 rel="noopener noreferrer"
                 className="btn btn-sm btn-soft btn-secondary"
               >
-                Web de la universidad
+                {t.universitySite}
               </a>
             </div>
           </div>
@@ -56,20 +154,17 @@ const Timeline = () => {
             <span className="icon-[tabler--book] bg-[var(--muted)] text-warning size-5"></span>
           </span>
         </div>
-        <div className="timeline-start me-4 mt-8 max-md:pt-2">
+        <div className="timeline-start ms-4 me-4 mt-8 max-md:pt-2">
           <div className="text-sm font-normal text-[var(--muted)]">
-            Septiembre, 2025
+            {t.msc.date}
           </div>
         </div>
         <div className="timeline-end ms-4 mb-8">
           <div className="card border border-[var(--border)] bg-[var(--surface)]">
             <div className="card-body gap-4">
-              <h5 className="card-title text-lg">
-                Master en Ciencia y Tecnologia Informatica - UC3M
-              </h5>
+              <h5 className="card-title text-lg">{t.msc.title}</h5>
               <p>
-                Inicio el master en la Universidad Carlos III de Madrid, enfocado en ciencia y
-                tecnologia informatica. <span className="text-[var(--muted)]">En curso.</span>
+                {t.msc.description} <span className="text-[var(--muted)]">{t.inProgress}</span>
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Image
@@ -86,7 +181,7 @@ const Timeline = () => {
                 rel="noopener noreferrer"
                 className="btn btn-sm btn-soft btn-secondary"
               >
-                Web de la universidad
+                {t.universitySite}
               </a>
             </div>
           </div>
@@ -101,25 +196,22 @@ const Timeline = () => {
           </span>
         </div>
         <div className="timeline-end mt-6 px-1 md:mt-8">
-          <div className="text-sm font-normal text-[var(--muted)]">Julio, 2025</div>
+          <div className="text-sm font-normal text-[var(--muted)]">{t.degree.date}</div>
         </div>
-        <div className="timeline-start me-4 mb-8 w-full">
+        <div className="timeline-start ms-4 me-4 mb-8 w-full">
           <div className="card border border-[var(--border)] bg-[var(--surface)]">
             <div className="card-body gap-4">
-              <h5 className="card-title text-lg">
-                Finalización de estudios universitarios: Ingeniería Informática, Ingeniería del Software - Universidad de Sevilla
-              </h5>
+              <h5 className="card-title text-lg">{t.degree.title}</h5>
               
               <p>
-                Finalizo mis estudios universitarios en la Universidad de Sevilla, con la intención de
-                seguir creciendo y desarrollando mis habilidades en el mundo laboral. En esta etapa he contribuido y/o desarrollado proyectos que me gustaría destacar:
+                {t.degree.description}
               </p>
 
               <a
                 href="#projects"
                 className="btn btn-sm btn-soft btn-secondary"
               >
-                Ir a mis proyectos <span className="icon-[tabler--brand-github] text-info size-5" />
+                {t.projects} <span className="icon-[tabler--brand-github] text-info size-5" />
               </a>
               
             </div>
@@ -134,9 +226,9 @@ const Timeline = () => {
             <span className="icon-[tabler--briefcase] bg-[var(--muted)] text-warning size-5"></span>
           </span>
         </div>
-        <div className="timeline-start me-4 mt-8 max-md:pt-2">
+        <div className="timeline-start ms-4 me-4 mt-8 max-md:pt-2">
           <div className="text-sm font-normal text-[var(--muted)]">
-            Septiembre, 2023 - Diciembre, 2025
+            {t.axion.date}
           </div>
           
         </div>
@@ -144,16 +236,12 @@ const Timeline = () => {
         <div className="timeline-end ms-4 mb-8">
           <div className="card border border-[var(--border)] bg-[var(--surface)]">
             <div className="card-body gap-4">
-              <h5 className="card-title text-lg">
-                Full-Stack Developer - Axion
-              </h5>
+              <h5 className="card-title text-lg">{t.axion.title}</h5>
               <p>
-              Trabaje en una plataforma de monitorizacion en tiempo real para infraestructura de
-              radiodifusion a nivel nacional. Disene APIs REST y servicios backend para gestion de
-              activos e incidencias, y construi dashboards operativos con visualizacion en mapa.
+              {t.axion.description}
               </p>
               <div className="space-y-2">
-                <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">Stack del rol</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">{t.stack}</p>
                 <div className="flex flex-wrap gap-2">
                   <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">Angular</span>
                   <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">NestJS</span>
@@ -180,7 +268,7 @@ const Timeline = () => {
                 rel="noopener noreferrer"
                 className="btn btn-sm btn-soft btn-secondary"
               >
-                Web de la empresa
+                {t.companySite}
               </a>
             </div>
           </div>
@@ -196,17 +284,15 @@ const Timeline = () => {
         </div>
         <div className="timeline-end mt-6 px-1 md:mt-8">
           <div className="text-sm font-normal text-[var(--muted)]">
-            Septiembre, 2020
+            {t.startUni.date}
           </div>
         </div>
-        <div className="timeline-start me-4 mb-8">
+        <div className="timeline-start ms-4 me-4 mb-8">
           <div className="card border border-[var(--border)] bg-[var(--surface)]">
             <div className="card-body gap-4">
-              <h5 className="card-title text-lg">
-                Comienzo de estudios universitarios: Ingeniería Informática, Ingeniería del Software - Universidad de Sevilla
-              </h5>
+              <h5 className="card-title text-lg">{t.startUni.title}</h5>
               <p>
-                Empieza una nueva etapa que permite aprender y desarrollar mi pasión por la informática.
+                {t.startUni.description}
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Image
@@ -223,7 +309,7 @@ const Timeline = () => {
                 rel="noopener noreferrer"
                 className="btn btn-sm btn-soft btn-secondary"
               >
-                Web del centro
+                {t.schoolSite}
               </a>
             </div>
           </div>
@@ -237,20 +323,17 @@ const Timeline = () => {
             <span className="icon-[tabler--backpack] bg-[var(--muted)] text-warning size-5"></span>
           </span>
         </div>
-        <div className="timeline-start me-4 mt-8 max-md:pt-2">
+        <div className="timeline-start ms-4 me-4 mt-8 max-md:pt-2">
           <div className="text-sm font-normal text-[var(--muted)]">
-            Julio, 2019
+            {t.highSchool.date}
           </div>
         </div>
         <div className="timeline-end ms-4 mb-8">
           <div className="card border border-[var(--border)] bg-[var(--surface)]">
             <div className="card-body gap-4">
-              <h5 className="card-title text-lg">
-                Bachillerato de ciencias - Salesianos Stma. Trinidad
-              </h5>
+              <h5 className="card-title text-lg">{t.highSchool.title}</h5>
               <p>
-                Acabo mis estudios pre-grado en el centro Salesianos Stma. Trinidad, en la rama de
-                ciencias. 
+                {t.highSchool.description}
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Image
@@ -267,7 +350,7 @@ const Timeline = () => {
                   rel="noopener noreferrer"
                   className="btn btn-sm btn-soft btn-secondary"
                 >
-                  Web del centro
+                  {t.schoolSite}
                 </a>
             </div>
           </div>
