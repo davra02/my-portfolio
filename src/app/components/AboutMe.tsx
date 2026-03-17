@@ -21,31 +21,42 @@ export default function AboutMe() {
             Sobre mí
           </p>
           <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl">
-            Hola, soy David Reyes. Ingeniero de software con proyección hacia sistemas.
+            Hola, soy David Reyes. Software Engineer enfocado en backend y sistemas distribuidos.
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--muted)] sm:mt-5 sm:text-base">
-            He trabajado como desarrollador full stack, pero mi perfil es mas amplio: estoy cursando el master en
-            Ciencia y Tecnologia Informatica y mi TFM lo oriento a Ingenieria de sistemas. Me gusta pensar soluciones
-            a gran escala de forma pragmatica, sin perder el foco en lo que realmente aporta valor.
+            Tengo experiencia construyendo aplicaciones en tiempo real y servicios backend para entornos operativos.
+            Actualmente curso el master en Ciencia y Tecnologia Informatica en UC3M y participo como asistente de
+            investigacion en desarrollos aplicados al TFM. Me interesan la observabilidad, la infraestructura y las
+            plataformas de datos.
           </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
+            <a
+              href="/CV16Mar.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-sm btn-secondary"
+            >
+              Ver CV
+            </a>
+          </div>
           <div className="mt-6 flex flex-wrap justify-center gap-2 md:justify-start">
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-              Ingenieria
+              Backend
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-              Arquitectura
+              Sistemas distribuidos
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-              Sistemas
+              Observabilidad
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] sm:text-xs sm:tracking-[0.2em]">
-              Fullstack
+              Plataformas de datos
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] sm:text-xs sm:tracking-[0.2em]">
-              Ciencias de computacion
+              Arquitectura de software
             </span>
             <span className="rounded-full border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] sm:text-xs sm:tracking-[0.2em]">
-              Inteligencia artificial
+              Tiempo real
             </span>
           </div>
         </div>
