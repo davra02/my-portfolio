@@ -22,6 +22,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
             "Software architecture",
             "Real-time",
           ],
+          cv: "Download CV",
           location: "Madrid, Spain",
           linkedin: "LinkedIn",
           email: "Email",
@@ -41,6 +42,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
             "Arquitectura de software",
             "Tiempo real",
           ],
+          cv: "Descargar CV",
           location: "Madrid, Espana",
           linkedin: "LinkedIn",
           email: "Email",
@@ -97,6 +99,16 @@ export default function AboutMe({ lang }: AboutMeProps) {
               <circle cx="12" cy="11" r="2.2" />
             </svg>
             <span>{copy.location}</span>
+          </div>
+          <div className="mt-4">
+            <a
+              href="/CV-WEB.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text)] transition-all duration-300 hover:shadow-[var(--card-hover-shadow)] hover:border-[var(--card-hover-border)]"
+            >
+              {copy.cv}
+            </a>
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-4 md:justify-start">
             <a
