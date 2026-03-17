@@ -26,7 +26,7 @@ const FEATURED_DESCRIPTION_EN =
 const PROJECT_LIMIT = 6;
 
 type HomeProps = {
-  searchParams?: Promise<{ lang?: string }> | { lang?: string };
+  searchParams?: Promise<{ lang?: string | string[] }>;
 };
 
 async function getFeaturedProject(): Promise<GithubRepo | null> {
@@ -62,8 +62,11 @@ async function getGithubProjects(): Promise<GithubRepo[]> {
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const resolvedSearchParams = await Promise.resolve(searchParams ?? {});
-  const lang: Lang = resolvedSearchParams.lang === "en" ? "en" : "es";
+  const resolvedSearchParams = (await searchParams) ?? {};
+  const langParam = Array.isArray(resolvedSearchParams.lang)
+    ? resolvedSearchParams.lang[0]
+    : resolvedSearchParams.lang;
+  const lang: Lang = langParam === "en" ? "en" : "es";
 
   const text =
     lang === "en"
