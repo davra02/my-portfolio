@@ -116,10 +116,7 @@ export default async function Home({ searchParams }: HomeProps) {
             <h2 className="text-2xl font-semibold">{text.career}</h2>
             <span className="hidden h-px flex-1 bg-[var(--border)] sm:block sm:ml-6" />
           </div>
-          <div
-            className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:mt-8 sm:p-6"
-            style={{ paddingLeft: "50px" }}
-          >
+          <div className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:mt-8 sm:p-6">
             <Timeline lang={lang} />
           </div>
         </section>
