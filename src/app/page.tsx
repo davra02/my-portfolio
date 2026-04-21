@@ -12,10 +12,10 @@ type GithubRepo = {
   html_url: string;
   fork: boolean;
   updated_at: string;
+  icon?: React.ReactNode;
 };
 
 const GITHUB_USER = "davra02";
-const FEATURED_ORG = "Whispy-Decentralized-chat-application";
 const FEATURED_REPO = "Whispy-Client";
 const FEATURED_DESCRIPTION_ES =
   "Aplicacion social de mensajeria descentralizada con Ceramic Network. " +
@@ -23,43 +23,114 @@ const FEATURED_DESCRIPTION_ES =
 const FEATURED_DESCRIPTION_EN =
   "Decentralized social messaging app built on Ceramic Network. " +
   "End-to-end encryption for private messages and blockchain-backed features.";
-const PROJECT_LIMIT = 6;
+const PROJECT_ICONS: Record<string, React.ReactNode> = {
+  Whispy: (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 3a5 5 0 0 0-5 5v3" />
+      <rect x="6" y="11" width="12" height="9" rx="2" />
+      <circle cx="12" cy="15.5" r="1" />
+    </svg>
+  ),
+  "n-dim_maze_planner": (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 4h7v7H4z" />
+      <path d="M13 4h7v7h-7z" />
+      <path d="M4 13h7v7H4z" />
+      <path d="M13 13h7v7h-7z" />
+      <path d="M11 7h2M7 11v2M17 11v2M11 17h2" />
+    </svg>
+  ),
+  PokeClass: (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="8" />
+      <path d="M4 12h16" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
+  ),
+  HiseMotions2026: (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M9 5a3 3 0 0 1 6 0" />
+      <path d="M5 12a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4" />
+      <path d="M7 12v4a3 3 0 0 0 3 3h1" />
+      <path d="M17 12v2a3 3 0 0 1-3 3h-1" />
+      <path d="M9 9v3M12 9v5M15 9v3" />
+    </svg>
+  ),
+};
+const PINNED_PROJECTS: GithubRepo[] = [
+  {
+    name: "Whispy",
+    description:
+      "Decentralized end-to-end encrypted messaging platform exploring user-owned identity, distributed data storage, and privacy-first social communication.",
+    html_url: "https://github.com/davra02/Whispy",
+    fork: false,
+    updated_at: "",
+    icon: PROJECT_ICONS.Whispy,
+  },
+  {
+    name: "n-dim_maze_planner",
+    description:
+      "AI planning toolkit for temporal multi-agent maze problems in PDDL, featuring OPTIC integration, interactive 3D visualization, graph export, and benchmarking.",
+    html_url: "https://github.com/davra02/n-dim_maze_planner",
+    fork: false,
+    updated_at: "",
+    icon: PROJECT_ICONS["n-dim_maze_planner"],
+  },
+  {
+    name: "PokeClass",
+    description:
+      "Full-stack Pokémon-themed application focused on clean product design, interactive user experience, and solid frontend-to-backend integration.",
+    html_url: "https://github.com/davra02/PokeClass",
+    fork: false,
+    updated_at: "",
+    icon: PROJECT_ICONS.PokeClass,
+  },
+  {
+    name: "HiseMotions2026",
+    description:
+      "Machine learning project for emotion classification in Old Spanish texts, combining NLP, historical language analysis, and model evaluation.",
+    html_url: "https://github.com/davra02/old_spanish_emotions_classifier",
+    fork: false,
+    updated_at: "",
+    icon: PROJECT_ICONS.HiseMotions2026,
+  },
+];
 
 type HomeProps = {
   searchParams?: Promise<{ lang?: string | string[] }>;
 };
-
-async function getFeaturedProject(): Promise<GithubRepo | null> {
-  const response = await fetch(
-    `https://api.github.com/repos/${FEATURED_ORG}/${FEATURED_REPO}`,
-    {
-      next: { revalidate: 3600 },
-    }
-  );
-
-  if (!response.ok) {
-    return null;
-  }
-
-  return (await response.json()) as GithubRepo;
-}
-
-async function getGithubProjects(): Promise<GithubRepo[]> {
-  const response = await fetch(
-    `https://api.github.com/users/${GITHUB_USER}/repos?per_page=30&sort=pushed`,
-    {
-      next: { revalidate: 3600 },
-    }
-  );
-
-  if (!response.ok) {
-    return [];
-  }
-
-  const repos = (await response.json()) as GithubRepo[];
-
-  return repos.filter((repo) => !repo.fork).slice(0, PROJECT_LIMIT);
-}
 
 export default async function Home({ searchParams }: HomeProps) {
   const resolvedSearchParams = (await searchParams) ?? {};
@@ -91,15 +162,7 @@ export default async function Home({ searchParams }: HomeProps) {
           footer: "Mi Portfolio",
         };
 
-  const [featuredProject, projects] = await Promise.all([
-    getFeaturedProject(),
-    getGithubProjects(),
-  ]);
-
-  const combinedProjects = [
-    ...(featuredProject ? [featuredProject] : []),
-    ...projects.filter((project) => project.name !== FEATURED_REPO),
-  ].slice(0, PROJECT_LIMIT);
+  const combinedProjects = PINNED_PROJECTS;
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
@@ -127,9 +190,9 @@ export default async function Home({ searchParams }: HomeProps) {
           </div>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {combinedProjects.length > 0 ? (
-              combinedProjects.map((project) => (
+              combinedProjects.map((project, index) => (
                 <ProjectCard
-                  key={project.html_url}
+                  key={`${project.html_url}-${index}`}
                   title={project.name}
                   description={
                     project.name === FEATURED_REPO
@@ -139,6 +202,7 @@ export default async function Home({ searchParams }: HomeProps) {
                   image={null}
                   link={project.html_url}
                   badge={project.name === FEATURED_REPO ? text.featuredBadge : null}
+                  icon={project.icon}
                 />
               ))
             ) : (

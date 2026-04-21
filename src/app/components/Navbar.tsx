@@ -12,134 +12,166 @@ interface NavbarProps {
 
 export default function Navbar({ lang }: NavbarProps) {
   const [theme, setTheme] = useState<ThemeMode | null>(null);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY) as ThemeMode | null;
+    const storedTheme = window.localStorage.getItem(
+      THEME_STORAGE_KEY
+    ) as ThemeMode | null;
     if (storedTheme === "light" || storedTheme === "dark") {
       setTheme(storedTheme);
       document.documentElement.setAttribute("data-theme", storedTheme);
-      return;
+    } else {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const initial: ThemeMode = prefersDark ? "dark" : "light";
+      setTheme(initial);
+      document.documentElement.setAttribute("data-theme", initial);
     }
+  }, []);
 
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme: ThemeMode = prefersDark ? "dark" : "light";
-    setTheme(initialTheme);
-    document.documentElement.setAttribute("data-theme", initialTheme);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const handleToggleTheme = () => {
-    const nextTheme: ThemeMode = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-    document.documentElement.setAttribute("data-theme", nextTheme);
+    const next: ThemeMode = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    window.localStorage.setItem(THEME_STORAGE_KEY, next);
+    document.documentElement.setAttribute("data-theme", next);
   };
 
   const labels =
     lang === "en"
-      ? {
-          about: "About",
-          career: "Career",
-          projects: "Projects",
-          theme: "Toggle color mode",
-        }
-      : {
-          about: "Sobre mi",
-          career: "Mi carrera",
-          projects: "Proyectos",
-          theme: "Cambiar modo de color",
-        };
+      ? { about: "About", career: "Career", projects: "Projects" }
+      : { about: "Sobre mí", career: "Carrera", projects: "Proyectos" };
 
   const languageOptions = [
-    { code: "es" as const, href: "/", label: "ES" },
+    { code: "es" as const, href: "/",        label: "ES" },
     { code: "en" as const, href: "/?lang=en", label: "EN" },
   ];
 
+  const navLinks = [
+    { href: "#about",    label: labels.about },
+    { href: "#timeline", label: labels.career },
+    { href: "#projects", label: labels.projects },
+  ];
+
   return (
-    <nav className="border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <h1 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text)] sm:text-sm sm:tracking-[0.2em]">
-          David Reyes
-        </h1>
-        <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] sm:gap-6 sm:text-xs sm:tracking-[0.2em]">
-          <ul className="flex flex-wrap items-center gap-3 sm:gap-6">
-            <li>
-              <a href="#about" className="transition-colors hover:text-[var(--text)]">
-                {labels.about}
-              </a>
-            </li>
-            <li>
-              <a href="#timeline" className="transition-colors hover:text-[var(--text)]">
-                {labels.career}
-              </a>
-            </li>
-            <li>
-              <a href="#projects" className="transition-colors hover:text-[var(--text)]">
-                {labels.projects}
-              </a>
-            </li>
+    <nav
+      className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled
+          ? "var(--nav-bg)"
+          : "transparent",
+        backdropFilter: scrolled ? "blur(14px)" : "none",
+        borderBottom: scrolled
+          ? "1px solid var(--border)"
+          : "1px solid transparent",
+      }}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-6">
+
+        {/* Wordmark */}
+        <a
+          href="/"
+          className="group flex items-center gap-2 transition-opacity duration-200 hover:opacity-80"
+          aria-label="Home"
+        >
+          <span
+            className="h-1.5 w-1.5 rounded-full transition-transform duration-300 group-hover:scale-125"
+            style={{ background: "var(--accent)" }}
+          />
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text)]">
+            David Reyes
+          </span>
+        </a>
+
+        {/* Right controls */}
+        <div className="flex items-center gap-4">
+
+          {/* Nav links */}
+          <ul className="hidden items-center gap-5 sm:flex">
+            {navLinks.map(({ href, label }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  className="group relative text-[10px] uppercase tracking-[0.22em] text-[var(--muted)] transition-colors duration-200 hover:text-[var(--text)]"
+                >
+                  {label}
+                  <span
+                    className="absolute -bottom-0.5 left-0 h-px w-0 transition-all duration-300 group-hover:w-full"
+                    style={{ background: "var(--accent)" }}
+                  />
+                </a>
+              </li>
+            ))}
           </ul>
-          <div className="flex items-center gap-1 rounded-full border border-[var(--border)] p-0.5">
+
+          {/* Divider */}
+          <span
+            className="hidden h-4 w-px sm:block"
+            style={{ background: "var(--border)" }}
+          />
+
+          {/* Language toggle */}
+          <div
+            className="flex items-center rounded-full border p-0.5"
+            style={{ borderColor: "var(--border)", background: "var(--surface)" }}
+          >
             {languageOptions.map((option) => {
               const isActive = option.code === lang;
-
               return (
                 <a
                   key={option.code}
                   href={option.href}
-                  aria-label={option.code === "en" ? "English version" : "Version en espanol"}
-                  className={`rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-[0.14em] transition-colors ${
-                    isActive
-                      ? "bg-[var(--surface-strong)] text-[var(--text)]"
-                      : "text-[var(--muted)] hover:text-[var(--text)]"
-                  }`}
+                  aria-label={
+                    option.code === "en" ? "English version" : "Versión en español"
+                  }
+                  className="rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-[0.14em] transition-all duration-200"
+                  style={{
+                    background: isActive ? "var(--accent)" : "transparent",
+                    color: isActive ? "#fff" : "var(--muted)",
+                  }}
                 >
                   {option.label}
                 </a>
               );
             })}
           </div>
+
+          {/* Theme toggle */}
           <button
             type="button"
             onClick={handleToggleTheme}
-            className="flex items-center justify-center rounded-full border border-[var(--border)] p-2 text-[var(--muted)] transition-colors hover:text-[var(--text)]"
-            aria-label={labels.theme}
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            className="flex h-8 w-8 items-center justify-center rounded-full border text-[var(--muted)] transition-all duration-200 hover:border-[var(--accent)] hover:text-[var(--text)]"
+            style={{ borderColor: "var(--border)", background: "var(--surface)" }}
           >
             {theme === "dark" ? (
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
+              /* Sun */
+              <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="4" />
                 <line x1="12" y1="2.5" x2="12" y2="5" />
                 <line x1="12" y1="19" x2="12" y2="21.5" />
-                <line x1="2.5" y1="12" x2="5" y2="12" />
-                <line x1="19" y1="12" x2="21.5" y2="12" />
-                <line x1="4.4" y1="4.4" x2="6.2" y2="6.2" />
+                <line x1="2.5" y1="12" x2="5"  y2="12" />
+                <line x1="19"  y1="12" x2="21.5" y2="12" />
+                <line x1="4.4" y1="4.4"   x2="6.2"  y2="6.2" />
                 <line x1="17.8" y1="17.8" x2="19.6" y2="19.6" />
-                <line x1="17.8" y1="6.2" x2="19.6" y2="4.4" />
-                <line x1="4.4" y1="19.6" x2="6.2" y2="17.8" />
+                <line x1="17.8" y1="6.2"  x2="19.6" y2="4.4" />
+                <line x1="4.4" y1="19.6"  x2="6.2"  y2="17.8" />
               </svg>
             ) : (
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
+              /* Moon */
+              <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15.5A8.5 8.5 0 0 1 8.5 3a7.5 7.5 0 1 0 12.5 12.5Z" />
               </svg>
             )}
           </button>
+
         </div>
       </div>
     </nav>
