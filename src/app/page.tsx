@@ -18,7 +18,7 @@ type GithubRepo = {
 const GITHUB_USER = "davra02";
 const FEATURED_REPO = "Whispy-Client";
 const FEATURED_DESCRIPTION_ES =
-  "Aplicacion social de mensajeria descentralizada con Ceramic Network. " +
+  "Aplicación social de mensajería descentralizada con Ceramic Network. " +
   "Cifrado extremo a extremo en mensajes privados y uso de blockchain para ciertas funciones.";
 const FEATURED_DESCRIPTION_EN =
   "Decentralized social messaging app built on Ceramic Network. " +
@@ -155,10 +155,10 @@ export default async function Home({ searchParams }: HomeProps) {
           career: "Mi carrera",
           projects: "Proyectos",
           featuredDescription: FEATURED_DESCRIPTION_ES,
-          noDescription: "Sin descripcion",
+          noDescription: "Sin descripción",
           featuredBadge: "Destacado",
           fallbackTitle: "Proyectos en GitHub",
-          fallbackDescription: "No se pudieron cargar los repositorios. Intentalo mas tarde.",
+          fallbackDescription: "No se pudieron cargar los repositorios. Inténtalo más tarde.",
           footer: "Mi Portfolio",
         };
 

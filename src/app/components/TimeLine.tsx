@@ -64,41 +64,41 @@ const Timeline = ({ lang }: TimelineProps) => {
           projects: "Ir a mis proyectos",
           research: {
             date: "2026 - Actualidad",
-            title: "Asistente de investigacion - Universidad Carlos III de Madrid",
+            title: "Asistente de investigación - Universidad Carlos III de Madrid",
             description:
-              "Desarrollo sistemas y prototipos de software aplicados a mi TFM en colaboracion con industria, con foco en plataformas de datos y sistemas distribuidos.",
+              "Desarrollo sistemas y prototipos de software aplicados a mi TFM en colaboración con industria, con foco en plataformas de datos y sistemas distribuidos.",
           },
           msc: {
             date: "Septiembre, 2025",
-            title: "Master en Ciencia y Tecnologia Informatica - UC3M",
+            title: "Máster en Ciencia y Tecnología Informática - UC3M",
             description:
-              "Inicio el master en la Universidad Carlos III de Madrid, enfocado en ciencia y tecnologia informatica.",
+              "Inicio el máster en la Universidad Carlos III de Madrid, enfocado en ciencia y tecnología informática.",
           },
           degree: {
             date: "Julio, 2025",
             title:
-              "Finalizacion de estudios universitarios: Ingenieria Informatica, Ingenieria del Software - Universidad de Sevilla",
+              "Finalización de estudios universitarios: Ingeniería Informática, Ingeniería del Software - Universidad de Sevilla",
             description:
-              "Finalizo mis estudios universitarios en la Universidad de Sevilla, con la intencion de seguir creciendo y desarrollando mis habilidades en el mundo laboral. En esta etapa he contribuido y/o desarrollado proyectos que me gustaria destacar:",
+              "Finalizo mis estudios universitarios en la Universidad de Sevilla, con la intención de seguir creciendo y desarrollando mis habilidades en el mundo laboral. En esta etapa he contribuido y/o desarrollado proyectos que me gustaría destacar:",
           },
           axion: {
             date: "Septiembre, 2023 - Diciembre, 2025",
             title: "Full-Stack Developer - Axion",
             description:
-              "Trabaje en una plataforma de monitorizacion en tiempo real para infraestructura de radiodifusion a nivel nacional. Disene APIs REST y servicios backend para gestion de activos e incidencias, y construi dashboards operativos con visualizacion en mapa.",
+              "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional. Diseñé APIs REST y servicios backend para gestión de activos e incidencias, y construí dashboards operativos con visualización en mapa.",
           },
           startUni: {
             date: "Septiembre, 2020",
             title:
-              "Comienzo de estudios universitarios: Ingenieria Informatica, Ingenieria del Software - Universidad de Sevilla",
+              "Comienzo de estudios universitarios: Ingeniería Informática, Ingeniería del Software - Universidad de Sevilla",
             description:
-              "Empieza una nueva etapa que permite aprender y desarrollar mi pasion por la informatica.",
+              "Empieza una nueva etapa que permite aprender y desarrollar mi pasión por la informática.",
           },
           highSchool: {
             date: "Julio, 2019",
             title: "Bachillerato de ciencias - Salesianos Stma. Trinidad",
             description:
-              "Acabo mis estudios pre-grado en el centro Salesianos Stma. Trinidad, en la rama de ciencias.",
+              "Acabo mis estudios pregrado en el centro Salesianos Stma. Trinidad, en la rama de ciencias.",
           },
         };
 
