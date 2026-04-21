@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 const THEME_STORAGE_KEY = "theme";
 type ThemeMode = "light" | "dark";
@@ -76,7 +77,7 @@ export default function Navbar({ lang }: NavbarProps) {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-6">
 
         {/* Wordmark */}
-        <a
+        <Link
           href="/"
           className="group flex items-center gap-2 transition-opacity duration-200 hover:opacity-80"
           aria-label="Home"
@@ -88,7 +89,7 @@ export default function Navbar({ lang }: NavbarProps) {
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text)]">
             David Reyes
           </span>
-        </a>
+        </Link>
 
         {/* Right controls */}
         <div className="flex items-center gap-4">
@@ -125,7 +126,7 @@ export default function Navbar({ lang }: NavbarProps) {
             {languageOptions.map((option) => {
               const isActive = option.code === lang;
               return (
-                <a
+                <Link
                   key={option.code}
                   href={option.href}
                   aria-label={
@@ -138,7 +139,7 @@ export default function Navbar({ lang }: NavbarProps) {
                   }}
                 >
                   {option.label}
-                </a>
+                </Link>
               );
             })}
           </div>
