@@ -17,7 +17,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
           stats: [
             { value: "2.5+", label: "Years in prod." },
             { value: "85%", label: "CI/CD cut" },
-            { value: "50+", label: "Users served" },
+            { value: "200+", label: "Users served" },
           ],
           tags: ["Backend", "Distributed systems", "Observability", "Data platforms", "Architecture", "Real-time"],
           cv: "Download CV",
@@ -25,7 +25,6 @@ export default function AboutMe({ lang }: AboutMeProps) {
           available: "Open to offers",
           linkedin: "LinkedIn",
           email: "Email",
-          instagram: "Instagram",
           github: "GitHub",
         }
       : {
@@ -36,7 +35,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
           stats: [
             { value: "2.5+", label: "Años en prod." },
             { value: "85%", label: "Reducción CI/CD" },
-            { value: "50+", label: "Usuarios" },
+            { value: "200+", label: "Usuarios" },
           ],
           tags: ["Backend", "Sistemas distribuidos", "Observabilidad", "Plataformas de datos", "Arquitectura", "Tiempo real"],
           cv: "Descargar CV",
@@ -44,7 +43,6 @@ export default function AboutMe({ lang }: AboutMeProps) {
           available: "Abierto a ofertas",
           linkedin: "LinkedIn",
           email: "Email",
-          instagram: "Instagram",
           github: "GitHub",
         };
 
@@ -77,17 +75,6 @@ export default function AboutMe({ lang }: AboutMeProps) {
         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
           <rect x="4" y="6" width="16" height="12" rx="2" />
           <path d="M4 8l8 5 8-5" />
-        </svg>
-      ),
-    },
-    {
-      label: copy.instagram,
-      href: "https://instagram.com/david_ra02",
-      icon: (
-        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="4" y="4" width="16" height="16" rx="4" />
-          <circle cx="12" cy="12" r="3" />
-          <circle cx="16.5" cy="7.5" r="0.8" fill="currentColor" stroke="none" />
         </svg>
       ),
     },
@@ -168,7 +155,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
             <div className="anim-fade-up delay-5 mt-8 flex flex-wrap items-center gap-3">
               {/* Primary CTA */}
               <a
-                href="/CV-7.pdf"
+                href="/David_Reyes_Ales_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-10 items-center gap-2 rounded-lg px-5 text-xs font-semibold uppercase tracking-[0.12em] text-white transition-all duration-200 hover:-translate-y-px hover:opacity-90 active:translate-y-0"
@@ -239,7 +226,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
               style={{ borderColor: "var(--border)", background: "var(--surface)" }}
             >
               <Image
-                src="/yo.png"
+                src="/yo.jpeg"
                 alt="David Reyes"
                 width={300}
                 height={370}

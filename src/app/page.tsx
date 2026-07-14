@@ -71,6 +71,23 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
       <circle cx="12" cy="12" r="2" />
     </svg>
   ),
+  "SysML v2 Collaborative Modeler": (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="4" width="6" height="4" rx="1" />
+      <rect x="15" y="4" width="6" height="4" rx="1" />
+      <rect x="9" y="16" width="6" height="4" rx="1" />
+      <path d="M6 8v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8" />
+      <path d="M12 12v4" />
+    </svg>
+  ),
   HiseMotions2026: (
     <svg
       viewBox="0 0 24 24"
@@ -90,6 +107,15 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
   ),
 };
 const PINNED_PROJECTS: GithubRepo[] = [
+  {
+    name: "SysML v2 Collaborative Modeler",
+    description:
+      "Real-time collaborative diagramming application compliant with the SysML v2 standard, developed as part of my MSc thesis at UC3M. Built with React and Next.js on the frontend, an ASP.NET backend over PostgreSQL, and HocusPocus for conflict-free multi-user editing.",
+    html_url: "",
+    fork: false,
+    updated_at: "",
+    icon: PROJECT_ICONS["SysML v2 Collaborative Modeler"],
+  },
   {
     name: "Whispy",
     description:
@@ -111,7 +137,7 @@ const PINNED_PROJECTS: GithubRepo[] = [
   {
     name: "PokeClass",
     description:
-      "Full-stack Pokémon-themed application focused on clean product design, interactive user experience, and solid frontend-to-backend integration.",
+      "Pokémon image classifier built on a ResNet18 convolutional network fine-tuned with PyTorch, packaged as an Electron + React desktop app and shipped alongside a Streamlit demo for quick in-browser inference.",
     html_url: "https://github.com/davra02/PokeClass",
     fork: false,
     updated_at: "",

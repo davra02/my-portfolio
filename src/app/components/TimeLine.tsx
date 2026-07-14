@@ -18,7 +18,7 @@ const Timeline = ({ lang }: TimelineProps) => {
           projects: "Go to projects",
           research: {
             date: "2026 - Present",
-            title: "Research Assistant - Universidad Carlos III de Madrid",
+            title: "Software Developer — Industry Research Project - Universidad Carlos III de Madrid",
             description:
               "I develop software systems and prototypes related to my MSc thesis in collaboration with industry, focused on data platforms and distributed systems.",
           },
@@ -39,7 +39,7 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "September, 2023 - December, 2025",
             title: "Full-Stack Developer - Axion",
             description:
-              "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure. I designed REST APIs and backend services for asset and incident management, and I built map-based operational dashboards.",
+              "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure, designing REST APIs and backend services for asset and incident management and building map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving hundreds of users.",
           },
           startUni: {
             date: "September, 2020",
@@ -64,7 +64,7 @@ const Timeline = ({ lang }: TimelineProps) => {
           projects: "Ir a mis proyectos",
           research: {
             date: "2026 - Actualidad",
-            title: "Asistente de investigación - Universidad Carlos III de Madrid",
+            title: "Software Developer — Industry Research Project - Universidad Carlos III de Madrid",
             description:
               "Desarrollo sistemas y prototipos de software aplicados a mi TFM en colaboración con industria, con foco en plataformas de datos y sistemas distribuidos.",
           },
@@ -85,7 +85,7 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "Septiembre, 2023 - Diciembre, 2025",
             title: "Full-Stack Developer - Axion",
             description:
-              "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional. Diseñé APIs REST y servicios backend para gestión de activos e incidencias, y construí dashboards operativos con visualización en mapa.",
+              "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, diseñando APIs REST y servicios backend para gestión de activos e incidencias y construyendo dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a cientos de usuarios.",
           },
           startUni: {
             date: "Septiembre, 2020",
@@ -245,7 +245,6 @@ const Timeline = ({ lang }: TimelineProps) => {
                 <div className="flex flex-wrap gap-2">
                   <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">Angular</span>
                   <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">NestJS</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">Spring</span>
                   <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">SQL (Postgres)</span>
                   <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">Redis</span>
                   <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">CouchDB</span>
