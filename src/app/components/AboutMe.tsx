@@ -13,7 +13,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
           role: "Backend Engineer · Distributed Systems · MSc UC3M",
           title: "David Reyes",
           description:
-            "I build real-time platforms and backend services for operational environments. Currently pursuing an MSc at UC3M and working as a research assistant on data platforms and distributed systems with industry partners.",
+            "I build real-time platforms and backend services for operational environments. MSc in Computer Science and Technology from UC3M (2026), with industry research experience in data platforms and distributed systems.",
           stats: [
             { value: "2.5+", label: "Years in prod." },
             { value: "85%", label: "CI/CD cut" },
@@ -31,7 +31,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
           role: "Backend Engineer · Sistemas Distribuidos · MSc UC3M",
           title: "David Reyes",
           description:
-            "Construyo plataformas en tiempo real y servicios backend para entornos operativos. Actualmente curso el MSc en UC3M y participo como asistente de investigación en plataformas de datos y sistemas distribuidos con industria.",
+            "Construyo plataformas en tiempo real y servicios backend para entornos operativos. MSc en Ciencia y Tecnología Informática por la UC3M (2026), con experiencia en investigación con industria en plataformas de datos y sistemas distribuidos.",
           stats: [
             { value: "2.5+", label: "Años en prod." },
             { value: "85%", label: "Reducción CI/CD" },

@@ -6,358 +6,190 @@ interface TimelineProps {
   lang: Lang;
 }
 
+type TimelineLink = {
+  href: string;
+  label: string;
+  github?: boolean;
+};
+
+type TimelineEntry = {
+  icon: string;
+  date: string;
+  title: string;
+  role?: string;
+  description: string;
+  tags?: string[];
+  logo?: { src: string; alt: string };
+  links: TimelineLink[];
+};
+
 const Timeline = ({ lang }: TimelineProps) => {
-  const t =
+  const entries: TimelineEntry[] =
     lang === "en"
-      ? {
-          stack: "Role stack",
-          inProgress: "In progress.",
-          universitySite: "University website",
-          companySite: "Company website",
-          schoolSite: "School website",
-          projects: "Go to projects",
-          research: {
-            date: "2026 - Present",
-            title: "Software Developer — Industry Research Project - Universidad Carlos III de Madrid",
+      ? [
+          {
+            icon: "icon-[tabler--book]",
+            date: "September, 2025 — July, 2026",
+            title: "MSc in Computer Science and Technology — UC3M",
+            role: "Software Developer — Industry Research Project",
             description:
-              "I develop software systems and prototypes related to my MSc thesis in collaboration with industry, focused on data platforms and distributed systems.",
+              "MSc completed in July 2026 at Universidad Carlos III de Madrid. As part of my thesis I worked on an industry research project, developing systems and prototypes focused on data platforms and distributed systems.",
+            tags: ["React", "Next.js", "ASP.NET", "SQL", "HocusPocus", "SysMLv2"],
+            logo: { src: "/uc3m.png", alt: "UC3M logo" },
+            links: [{ href: "https://www.uc3m.es", label: "University website" }],
           },
-          msc: {
-            date: "September, 2025",
-            title: "MSc in Computer Science and Technology - UC3M",
-            description:
-              "I started my MSc at Universidad Carlos III de Madrid, focused on computer science and technology.",
-          },
-          degree: {
-            date: "July, 2025",
-            title:
-              "Completion of university studies: Computer Engineering, Software Engineering - Universidad de Sevilla",
-            description:
-              "I completed my university studies at Universidad de Sevilla with the goal of continuing to grow in the software industry. During this period I contributed to and developed projects worth highlighting:",
-          },
-          axion: {
-            date: "September, 2023 - December, 2025",
-            title: "Full-Stack Developer - Axion",
+          {
+            icon: "icon-[tabler--briefcase]",
+            date: "September, 2023 — December, 2025",
+            title: "Full-Stack Developer — Axion",
             description:
               "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure, designing REST APIs and backend services for asset and incident management and building map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving hundreds of users.",
+            tags: ["Angular", "NestJS", "SQL (Postgres)", "Redis", "CouchDB"],
+            logo: { src: "/logo-axion.svg", alt: "Axion logo" },
+            links: [{ href: "https://www.axion.es", label: "Company website" }],
           },
-          startUni: {
-            date: "September, 2020",
+          {
+            icon: "icon-[tabler--school]",
+            date: "September, 2020 — November, 2025",
             title:
-              "Start of university studies: Computer Engineering, Software Engineering - Universidad de Sevilla",
+              "Computer Engineering, Software Engineering — Universidad de Sevilla",
             description:
-              "A new stage began where I could learn and further develop my passion for software engineering.",
+              "Studies completed in November 2025. A stage where I developed my passion for software engineering and contributed to projects worth highlighting:",
+            logo: { src: "/us.png", alt: "Universidad de Sevilla logo" },
+            links: [
+              { href: "#projects", label: "Go to projects", github: true },
+              { href: "https://www.us.es", label: "University website" },
+            ],
           },
-          highSchool: {
+          {
+            icon: "icon-[tabler--backpack]",
             date: "July, 2019",
-            title: "Science Baccalaureate - Salesianos Stma. Trinidad",
+            title: "Science Baccalaureate — Salesianos Stma. Trinidad",
             description:
               "I completed my pre-university studies at Salesianos Stma. Trinidad in the science track.",
+            logo: { src: "/salesianos.jpg", alt: "Salesianos Stma. Trinidad logo" },
+            links: [
+              { href: "https://trinidad.salesianos.edu", label: "School website" },
+            ],
           },
-        }
-      : {
-          stack: "Stack del rol",
-          inProgress: "En curso.",
-          universitySite: "Web de la universidad",
-          companySite: "Web de la empresa",
-          schoolSite: "Web del centro",
-          projects: "Ir a mis proyectos",
-          research: {
-            date: "2026 - Actualidad",
-            title: "Software Developer — Industry Research Project - Universidad Carlos III de Madrid",
+        ]
+      : [
+          {
+            icon: "icon-[tabler--book]",
+            date: "Septiembre, 2025 — Julio, 2026",
+            title: "Máster en Ciencia y Tecnología Informática — UC3M",
+            role: "Software Developer — Industry Research Project",
             description:
-              "Desarrollo sistemas y prototipos de software aplicados a mi TFM en colaboración con industria, con foco en plataformas de datos y sistemas distribuidos.",
+              "Máster finalizado en julio de 2026 en la Universidad Carlos III de Madrid. Como parte del TFM trabajé en un proyecto de investigación con industria, desarrollando sistemas y prototipos con foco en plataformas de datos y sistemas distribuidos.",
+            tags: ["React", "Next.js", "ASP.NET", "SQL", "HocusPocus", "SysMLv2"],
+            logo: { src: "/uc3m.png", alt: "Logo UC3M" },
+            links: [{ href: "https://www.uc3m.es", label: "Web de la universidad" }],
           },
-          msc: {
-            date: "Septiembre, 2025",
-            title: "Máster en Ciencia y Tecnología Informática - UC3M",
-            description:
-              "Inicio el máster en la Universidad Carlos III de Madrid, enfocado en ciencia y tecnología informática.",
-          },
-          degree: {
-            date: "Julio, 2025",
-            title:
-              "Finalización de estudios universitarios: Ingeniería Informática, Ingeniería del Software - Universidad de Sevilla",
-            description:
-              "Finalizo mis estudios universitarios en la Universidad de Sevilla, con la intención de seguir creciendo y desarrollando mis habilidades en el mundo laboral. En esta etapa he contribuido y/o desarrollado proyectos que me gustaría destacar:",
-          },
-          axion: {
-            date: "Septiembre, 2023 - Diciembre, 2025",
-            title: "Full-Stack Developer - Axion",
+          {
+            icon: "icon-[tabler--briefcase]",
+            date: "Septiembre, 2023 — Diciembre, 2025",
+            title: "Full-Stack Developer — Axion",
             description:
               "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, diseñando APIs REST y servicios backend para gestión de activos e incidencias y construyendo dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a cientos de usuarios.",
+            tags: ["Angular", "NestJS", "SQL (Postgres)", "Redis", "CouchDB"],
+            logo: { src: "/logo-axion.svg", alt: "Logo Axion" },
+            links: [{ href: "https://www.axion.es", label: "Web de la empresa" }],
           },
-          startUni: {
-            date: "Septiembre, 2020",
+          {
+            icon: "icon-[tabler--school]",
+            date: "Septiembre, 2020 — Noviembre, 2025",
             title:
-              "Comienzo de estudios universitarios: Ingeniería Informática, Ingeniería del Software - Universidad de Sevilla",
+              "Ingeniería Informática, Ingeniería del Software — Universidad de Sevilla",
             description:
-              "Empieza una nueva etapa que permite aprender y desarrollar mi pasión por la informática.",
+              "Estudios finalizados en noviembre de 2025. Una etapa en la que desarrollé mi pasión por la ingeniería del software y en la que contribuí a proyectos que me gustaría destacar:",
+            logo: { src: "/us.png", alt: "Logo Universidad de Sevilla" },
+            links: [
+              { href: "#projects", label: "Ir a mis proyectos", github: true },
+              { href: "https://www.us.es", label: "Web de la universidad" },
+            ],
           },
-          highSchool: {
+          {
+            icon: "icon-[tabler--backpack]",
             date: "Julio, 2019",
-            title: "Bachillerato de ciencias - Salesianos Stma. Trinidad",
+            title: "Bachillerato de ciencias — Salesianos Stma. Trinidad",
             description:
-              "Acabo mis estudios pregrado en el centro Salesianos Stma. Trinidad, en la rama de ciencias.",
+              "Finalicé mis estudios preuniversitarios en el centro Salesianos Stma. Trinidad, en la rama de ciencias.",
+            logo: { src: "/salesianos.jpg", alt: "Logo Salesianos Stma. Trinidad" },
+            links: [
+              { href: "https://trinidad.salesianos.edu", label: "Web del centro" },
+            ],
           },
-        };
+        ];
 
   return (
+    <ol className="relative ms-4 border-s border-[var(--border)] text-[var(--text)]">
+      {entries.map((entry) => (
+        <li key={entry.title} className="relative pb-10 ps-10 last:pb-1 sm:ps-12">
+          {/* Rail node */}
+          <span className="absolute start-0 top-0 flex size-8 -translate-x-1/2 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)]">
+            <span className={`${entry.icon} size-4 bg-[var(--muted)]`} />
+          </span>
 
-        
-    <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical timeline-centered text-[var(--text)]">
-      {/* timeline item 1 */}
-      <li className="timeline-shift">
-        <div className="timeline-middle h-16">
-          <span className="flex size-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)]">
-            <span className="icon-[tabler--microscope] text-info size-5 bg-[var(--muted)]"></span>
-          </span>
-        </div>
-        <div className="timeline-end mt-6 px-1 md:mt-8">
-          <div className="text-sm font-normal text-[var(--muted)]">{t.research.date}</div>
-        </div>
-        <div className="timeline-start ms-4 me-4 mb-8 w-full">
-          <div className="card border border-[var(--border)] bg-[var(--surface)]">
-            <div className="card-body gap-4">
-              <h5 className="card-title text-lg">{t.research.title}</h5>
-              <p>
-                {t.research.description} <span className="text-[var(--muted)]">{t.inProgress}</span>
-              </p>
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">{t.stack}</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">React</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">Next.js</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">ASP.NET</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">SQL</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">HocusPocus</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">SysMLv2</span>
-                </div>
-              </div>
-              <a
-                href="https://www.uc3m.es"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-soft btn-secondary"
-              >
-                {t.universitySite}
-              </a>
-            </div>
-          </div>
-        </div>
-        <hr />
-      </li>
-      {/* timeline item 2 */}
-      <li>
-        <div className="timeline-middle h-16">
-          <span className="flex size-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)]">
-            <span className="icon-[tabler--book] bg-[var(--muted)] text-warning size-5"></span>
-          </span>
-        </div>
-        <div className="timeline-start ms-4 me-4 mt-8 max-md:pt-2">
-          <div className="text-sm font-normal text-[var(--muted)]">
-            {t.msc.date}
-          </div>
-        </div>
-        <div className="timeline-end ms-4 mb-8">
-          <div className="card border border-[var(--border)] bg-[var(--surface)]">
-            <div className="card-body gap-4">
-              <h5 className="card-title text-lg">{t.msc.title}</h5>
-              <p>
-                {t.msc.description} <span className="text-[var(--muted)]">{t.inProgress}</span>
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Image
-                  src="/uc3m.png"
-                  alt="Logo UC3M"
-                  width={80}
-                  height={80}
-                  className="w-20 rounded border border-[var(--border)]"
-                />
-              </div>
-              <a
-                href="https://www.uc3m.es"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-soft btn-secondary"
-              >
-                {t.universitySite}
-              </a>
-            </div>
-          </div>
-        </div>
-        <hr />
-      </li>
-      {/* timeline item 3 */}
-      <li className="timeline-shift">
-        <div className="timeline-middle h-16">
-          <span className="flex size-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)]">
-            <span className="icon-[tabler--flag] text-info size-5 bg-[var(--muted)]"></span>
-          </span>
-        </div>
-        <div className="timeline-end mt-6 px-1 md:mt-8">
-          <div className="text-sm font-normal text-[var(--muted)]">{t.degree.date}</div>
-        </div>
-        <div className="timeline-start ms-4 me-4 mb-8 w-full">
-          <div className="card border border-[var(--border)] bg-[var(--surface)]">
-            <div className="card-body gap-4">
-              <h5 className="card-title text-lg">{t.degree.title}</h5>
-              
-              <p>
-                {t.degree.description}
-              </p>
+          <p className="pt-1.5 text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
+            {entry.date}
+          </p>
 
-              <a
-                href="#projects"
-                className="btn btn-sm btn-soft btn-secondary"
-              >
-                {t.projects} <span className="icon-[tabler--brand-github] text-info size-5" />
-              </a>
-              
-            </div>
-          </div>
-        </div>
-        <hr />
-      </li>
-      {/* timeline item 4 */}
-      <li>
-        <div className="timeline-middle h-16">
-          <span className="flex size-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)]">
-            <span className="icon-[tabler--briefcase] bg-[var(--muted)] text-warning size-5"></span>
-          </span>
-        </div>
-        <div className="timeline-start ms-4 me-4 mt-8 max-md:pt-2">
-          <div className="text-sm font-normal text-[var(--muted)]">
-            {t.axion.date}
-          </div>
-          
-        </div>
-        
-        <div className="timeline-end ms-4 mb-8">
-          <div className="card border border-[var(--border)] bg-[var(--surface)]">
-            <div className="card-body gap-4">
-              <h5 className="card-title text-lg">{t.axion.title}</h5>
-              <p>
-              {t.axion.description}
-              </p>
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">{t.stack}</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">Angular</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">NestJS</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">SQL (Postgres)</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">Redis</span>
-                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]">CouchDB</span>
-                </div>
-              </div>
+          <h3 className="mt-2 text-lg font-semibold leading-snug">{entry.title}</h3>
 
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Image
-                  src="/logo-axion.svg"
-                  alt="timeline Image"
-                  width={80}
-                  height={80}
-                  className="w-20 rounded border border-[var(--border)]"
-                />
-              </div>
+          {entry.role && (
+            <p className="mt-1 text-sm font-medium" style={{ color: "var(--accent)" }}>
+              {entry.role}
+            </p>
+          )}
 
-              <a
-                href="https://www.axion.es"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-soft btn-secondary"
-              >
-                {t.companySite}
-              </a>
+          <p className="mt-2 max-w-[72ch] text-sm leading-relaxed text-[var(--muted)]">
+            {entry.description}
+          </p>
+
+          {entry.tags && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {entry.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)]"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
-          </div>
-        </div>
-        <hr />
-      </li>
-      {/* timeline item 5 */}
-      <li className="timeline-shift">
-        <div className="timeline-middle h-16">
-          <span className="flex size-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)]">
-            <span className="icon-[tabler--school] bg-[var(--muted)] text-warning size-5"></span>
-          </span>
-        </div>
-        <div className="timeline-end mt-6 px-1 md:mt-8">
-          <div className="text-sm font-normal text-[var(--muted)]">
-            {t.startUni.date}
-          </div>
-        </div>
-        <div className="timeline-start ms-4 me-4 mb-8">
-          <div className="card border border-[var(--border)] bg-[var(--surface)]">
-            <div className="card-body gap-4">
-              <h5 className="card-title text-lg">{t.startUni.title}</h5>
-              <p>
-                {t.startUni.description}
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Image
-                  src="/us.png"
-                  alt="timeline Image"
-                  width={80}
-                  height={80}
-                  className="w-20 rounded border border-[var(--border)]"
-                />
-              </div>
-              <a
-                href="https://www.us.es"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-soft btn-secondary"
-              >
-                {t.schoolSite}
-              </a>
-            </div>
-          </div>
-        </div>
-        <hr />
-      </li>
-      {/* timeline item 6 */}
-      <li>
-        <div className="timeline-middle h-16">
-          <span className="flex size-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)]">
-            <span className="icon-[tabler--backpack] bg-[var(--muted)] text-warning size-5"></span>
-          </span>
-        </div>
-        <div className="timeline-start ms-4 me-4 mt-8 max-md:pt-2">
-          <div className="text-sm font-normal text-[var(--muted)]">
-            {t.highSchool.date}
-          </div>
-        </div>
-        <div className="timeline-end ms-4 mb-8">
-          <div className="card border border-[var(--border)] bg-[var(--surface)]">
-            <div className="card-body gap-4">
-              <h5 className="card-title text-lg">{t.highSchool.title}</h5>
-              <p>
-                {t.highSchool.description}
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Image
-                  src="/salesianos.jpg"
-                  alt="timeline Image"
-                  width={80}
-                  height={80}
-                  className="w-20 rounded border border-[var(--border)]"
-                />
-              </div>
+          )}
+
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            {entry.logo && (
+              <Image
+                src={entry.logo.src}
+                alt={entry.logo.alt}
+                width={56}
+                height={56}
+                className="w-14 rounded border border-[var(--border)]"
+              />
+            )}
+            {entry.links.map((link) => {
+              const isAnchor = link.href.startsWith("#");
+              return (
                 <a
-                  href="https://trinidad.salesianos.edu"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  key={link.href}
+                  href={link.href}
+                  target={isAnchor ? undefined : "_blank"}
+                  rel={isAnchor ? undefined : "noopener noreferrer"}
                   className="btn btn-sm btn-soft btn-secondary"
                 >
-                  {t.schoolSite}
+                  {link.label}
+                  {link.github && (
+                    <span className="icon-[tabler--brand-github] text-info size-5" />
+                  )}
                 </a>
-            </div>
+              );
+            })}
           </div>
-        </div>
-        <hr />
-      </li>
-      
-    </ul>
+        </li>
+      ))}
+    </ol>
   );
 };
 
