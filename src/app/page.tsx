@@ -13,6 +13,7 @@ type GithubRepo = {
   fork: boolean;
   updated_at: string;
   icon?: React.ReactNode;
+  demo_url?: string;
 };
 
 const GITHUB_USER = "davra02";
@@ -133,6 +134,7 @@ const PINNED_PROJECTS: GithubRepo[] = [
     fork: false,
     updated_at: "",
     icon: PROJECT_ICONS["n-dim_maze_planner"],
+    demo_url: "/maze_planner",
   },
   {
     name: "PokeClass",
@@ -176,6 +178,7 @@ export default async function Home({ searchParams }: HomeProps) {
           fallbackTitle: "GitHub Projects",
           fallbackDescription: "Repositories could not be loaded. Please try again later.",
           footer: "David Reyes Alés",
+          demoLabel: "Open app",
         }
       : {
           career: "Mi carrera",
@@ -186,6 +189,7 @@ export default async function Home({ searchParams }: HomeProps) {
           fallbackTitle: "Proyectos en GitHub",
           fallbackDescription: "No se pudieron cargar los repositorios. Inténtalo más tarde.",
           footer: "Mi Portfolio",
+          demoLabel: "Abrir aplicación",
         };
 
   const combinedProjects = PINNED_PROJECTS;
@@ -229,6 +233,8 @@ export default async function Home({ searchParams }: HomeProps) {
                   link={project.html_url}
                   badge={project.name === FEATURED_REPO ? text.featuredBadge : null}
                   icon={project.icon}
+                  demoUrl={project.demo_url}
+                  demoLabel={text.demoLabel}
                 />
               ))
             ) : (

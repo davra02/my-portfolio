@@ -9,6 +9,8 @@ interface ProjectCardProps {
   link?: string | null;
   badge?: string | null;
   icon?: React.ReactNode;
+  demoUrl?: string | null;
+  demoLabel?: string;
 }
 
 export default function ProjectCard({
@@ -18,10 +20,13 @@ export default function ProjectCard({
   link,
   badge,
   icon,
+  demoUrl,
+  demoLabel,
 }: ProjectCardProps) {
   const imageSrc  = image?.trim();
   const linkHref  = link?.trim();
   const badgeText = badge?.trim();
+  const demoHref  = demoUrl?.trim();
 
   const cardClasses =
     "group relative flex flex-col overflow-hidden rounded-xl border bg-[var(--surface)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--card-hover-shadow)] hover:border-[var(--card-hover-border)]";
@@ -110,9 +115,64 @@ export default function ProjectCard({
         <p className="mt-2.5 flex-1 text-sm leading-relaxed text-[var(--muted)]">
           {description}
         </p>
+
+        {/* Live app CTA — sits above the stretched card link */}
+        {demoHref && (
+          <div className="relative z-10 mt-4">
+            <a
+              href={demoHref}
+              className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] transition-opacity duration-200 hover:opacity-80"
+              style={{
+                borderColor: "var(--border)",
+                background: "var(--accent-dim)",
+                color: "var(--accent)",
+              }}
+            >
+              <svg
+                viewBox="0 0 20 20"
+                className="h-3.5 w-3.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M7.5 6.5l5 3.5-5 3.5z" />
+                <circle cx="10" cy="10" r="7.5" />
+              </svg>
+              {demoLabel}
+            </a>
+          </div>
+        )}
       </div>
     </>
   );
+
+  // With a demo CTA the card can't be an <a> — nesting links is invalid HTML.
+  // The repo link is stretched behind the content instead, keeping the whole
+  // card clickable while the CTA stays on top.
+  if (demoHref) {
+    return (
+      <motion.div
+        whileHover={{ scale: 1.015 }}
+        whileTap={{ scale: 0.99 }}
+        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className={cardClasses}
+      >
+        {linkHref && (
+          <a
+            href={linkHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Abrir proyecto ${title} en GitHub`}
+            className="absolute inset-0 z-0"
+          />
+        )}
+        {cardContent}
+      </motion.div>
+    );
+  }
 
   if (linkHref) {
     return (
