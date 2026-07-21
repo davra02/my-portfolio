@@ -44,7 +44,7 @@ const Timeline = ({ lang }: TimelineProps) => {
             title: "Full-Stack Developer — Axion",
             description:
               "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure, designing REST APIs and backend services for asset and incident management and building map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving hundreds of users.",
-            tags: ["Angular", "NestJS", "SQL (Postgres)", "Redis", "CouchDB"],
+            tags: ["Angular", "Java", "Spring Boot", "SQL (Postgres)", "Redis", "CouchDB"],
             logo: { src: "/logo-axion.svg", alt: "Axion logo" },
             links: [{ href: "https://www.axion.es", label: "Company website" }],
           },
@@ -91,7 +91,7 @@ const Timeline = ({ lang }: TimelineProps) => {
             title: "Full-Stack Developer — Axion",
             description:
               "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, diseñando APIs REST y servicios backend para gestión de activos e incidencias y construyendo dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a cientos de usuarios.",
-            tags: ["Angular", "NestJS", "SQL (Postgres)", "Redis", "CouchDB"],
+            tags: ["Angular", "Java", "Spring Boot", "SQL (Postgres)", "Redis", "CouchDB"],
             logo: { src: "/logo-axion.svg", alt: "Logo Axion" },
             links: [{ href: "https://www.axion.es", label: "Web de la empresa" }],
           },
