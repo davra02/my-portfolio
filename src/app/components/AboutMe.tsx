@@ -49,7 +49,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
   const socials = [
     {
       label: copy.linkedin,
-      href: "https://www.linkedin.com/in/david-reyes-al%C3%A9s-465264305",
+      href: "https://www.linkedin.com/in/david-reyes-ales/",
       icon: (
         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
           <rect x="4" y="4" width="16" height="16" rx="2" />

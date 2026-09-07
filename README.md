@@ -58,6 +58,6 @@ Los textos de cada sección viven junto a su componente, con las variantes en es
 
 ## Contacto
 
-- [LinkedIn](https://www.linkedin.com/in/david-reyes-al%C3%A9s-465264305)
+- [LinkedIn](https://www.linkedin.com/in/david-reyes-ales/)
 - [GitHub](https://github.com/davra02)
 - davidreyesales@gmail.com
