@@ -52,7 +52,7 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "September, 2023 — December, 2025",
             title: "Full-Stack Developer — Axion",
             description:
-              "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure, designing REST APIs and backend services for asset and incident management and building map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving 100+ users.",
+              "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure, designing REST APIs and backend services for asset and incident management and building map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving 100+ users. I combined the final stretch at Axion with finishing my BSc and starting my MSc at UC3M.",
             tags: ["NestJS", "Node.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "CouchDB", "Redis Stack", "Docker", "GitLab CI/CD", "Angular", "Microservices", "REST APIs", "Linux"],
             logo: { src: "/logo-axion.svg", alt: "Axion logo" },
             links: [{ href: "https://www.axion.es", label: "Company website" }],
@@ -60,8 +60,7 @@ const Timeline = ({ lang }: TimelineProps) => {
           {
             icon: "icon-[tabler--school]",
             date: "September, 2020 — November, 2025",
-            title:
-              "Computer Engineering, Software Engineering — Universidad de Sevilla",
+            title: "BSc in Software Engineering — Universidad de Sevilla",
             description:
               "Studies completed in November 2025. A stage where I developed my passion for software engineering and contributed to projects worth highlighting:",
             logo: { src: "/us.png", alt: "Universidad de Sevilla logo" },
@@ -108,7 +107,7 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "Septiembre, 2023 — Diciembre, 2025",
             title: "Full-Stack Developer — Axion",
             description:
-              "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, diseñando APIs REST y servicios backend para gestión de activos e incidencias y construyendo dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a más de 100 usuarios.",
+              "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, diseñando APIs REST y servicios backend para gestión de activos e incidencias y construyendo dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a más de 100 usuarios. Compaginé la última etapa en Axion con el cierre de la carrera y el inicio del máster en la UC3M.",
             tags: ["NestJS", "Node.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "CouchDB", "Redis Stack", "Docker", "GitLab CI/CD", "Angular", "Microservices", "REST APIs", "Linux"],
             logo: { src: "/logo-axion.svg", alt: "Logo Axion" },
             links: [{ href: "https://www.axion.es", label: "Web de la empresa" }],
@@ -117,7 +116,7 @@ const Timeline = ({ lang }: TimelineProps) => {
             icon: "icon-[tabler--school]",
             date: "Septiembre, 2020 — Noviembre, 2025",
             title:
-              "Ingeniería Informática, Ingeniería del Software — Universidad de Sevilla",
+              "Ingeniería Informática — Ingeniería del Software — Universidad de Sevilla",
             description:
               "Estudios finalizados en noviembre de 2025. Una etapa en la que desarrollé mi pasión por la ingeniería del software y en la que contribuí a proyectos que me gustaría destacar:",
             logo: { src: "/us.png", alt: "Logo Universidad de Sevilla" },
