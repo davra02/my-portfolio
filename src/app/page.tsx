@@ -1,10 +1,13 @@
 import React from "react";
+import type { Metadata } from "next";
 import ProjectCard from "./components/ProyectCard";
 import Navbar from "./components/Navbar";
 import AboutMe from "./components/AboutMe";
 import Timeline from "./components/TimeLine";
 
 type Lang = "es" | "en";
+
+const SITE_URL = "https://www.davidreyesales.com";
 
 type GithubRepo = {
   name: string;
@@ -160,12 +163,59 @@ type HomeProps = {
   searchParams?: Promise<{ lang?: string | string[] }>;
 };
 
+function resolveLang(langParam: string | string[] | undefined): Lang {
+  const value = Array.isArray(langParam) ? langParam[0] : langParam;
+  return value === "en" ? "en" : "es";
+}
+
+export async function generateMetadata({ searchParams }: HomeProps): Promise<Metadata> {
+  const resolvedSearchParams = (await searchParams) ?? {};
+  const lang = resolveLang(resolvedSearchParams.lang);
+
+  const title =
+    lang === "en"
+      ? "David Reyes Alés — Backend Software Engineer"
+      : "David Reyes Alés — Ingeniero de Software Backend";
+  const description =
+    lang === "en"
+      ? "Portfolio of David Reyes Alés. I build real-time platforms and backend services for operational environments. MSc at UC3M."
+      : "Portfolio de David Reyes Alés. Construyo plataformas en tiempo real y servicios backend para entornos operativos. MSc en UC3M.";
+  const keywords =
+    lang === "en"
+      ? ["David Reyes Alés", "backend", "software engineer", "distributed systems", "portfolio", "UC3M"]
+      : ["David Reyes Alés", "backend", "ingeniero de software", "sistemas distribuidos", "portfolio", "UC3M"];
+
+  return {
+    title,
+    description,
+    keywords,
+    alternates: {
+      canonical: lang === "en" ? "/?lang=en" : "/",
+      languages: {
+        es: "/?lang=es",
+        en: "/?lang=en",
+      },
+    },
+    openGraph: {
+      type: "website",
+      siteName: "David Reyes Alés",
+      title,
+      description,
+      url: lang === "en" ? `${SITE_URL}/?lang=en` : SITE_URL,
+      locale: lang === "en" ? "en_US" : "es_ES",
+      alternateLocale: lang === "en" ? "es_ES" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
 export default async function Home({ searchParams }: HomeProps) {
   const resolvedSearchParams = (await searchParams) ?? {};
-  const langParam = Array.isArray(resolvedSearchParams.lang)
-    ? resolvedSearchParams.lang[0]
-    : resolvedSearchParams.lang;
-  const lang: Lang = langParam === "en" ? "en" : "es";
+  const lang = resolveLang(resolvedSearchParams.lang);
 
   const text =
     lang === "en"

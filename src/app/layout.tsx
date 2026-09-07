@@ -14,45 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://www.davidreyesales.com";
-const SITE_TITLE = "David Reyes Alés — Ingeniero de Software Backend";
-const SITE_DESCRIPTION =
-  "Portfolio de David Reyes Alés. Construyo plataformas en tiempo real y servicios backend para entornos operativos. MSc en UC3M.";
 
+// Language-specific fields (title, description, openGraph, twitter, alternates.canonical)
+// are set per-request in page.tsx's generateMetadata, based on ?lang=. Next.js merges
+// this root metadata with the page's, so only what doesn't depend on `lang` lives here.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: SITE_TITLE,
-  description: SITE_DESCRIPTION,
-  keywords: [
-    "David Reyes Alés",
-    "backend",
-    "ingeniero de software",
-    "sistemas distribuidos",
-    "portfolio",
-    "UC3M",
-  ],
   authors: [{ name: "David Reyes Alés", url: SITE_URL }],
   creator: "David Reyes Alés",
-  alternates: {
-    canonical: "/",
-    languages: {
-      es: "/?lang=es",
-      en: "/?lang=en",
-    },
-  },
-  openGraph: {
-    type: "website",
-    siteName: "David Reyes Alés",
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    url: SITE_URL,
-    locale: "es_ES",
-    alternateLocale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-  },
   icons: {
     icon: "/simple_logo_favicon.png",
     shortcut: "/simple_logo_favicon.png",

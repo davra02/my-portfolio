@@ -28,13 +28,22 @@ const Timeline = ({ lang }: TimelineProps) => {
     lang === "en"
       ? [
           {
+            icon: "icon-[tabler--briefcase]",
+            date: "March, 2026 — July, 2026",
+            title: "Software Developer — The Reuse Company",
+            role: "Industry Research Project",
+            description:
+              "As part of my thesis I worked on an industry research project at The Reuse Company, developing systems and prototypes focused on data platforms and distributed systems.",
+            tags: ["React", "Next.js", "ASP.NET", "SQL", "HocusPocus", "SysMLv2"],
+            logo: { src: "/reuse.png", alt: "The Reuse Company logo" },
+            links: [{ href: "https://www.reusecompany.com/", label: "Company website" }],
+          },
+          {
             icon: "icon-[tabler--book]",
             date: "September, 2025 — July, 2026",
             title: "MSc in Computer Science and Technology — UC3M",
-            role: "Software Developer — Industry Research Project",
             description:
-              "MSc completed in July 2026 at Universidad Carlos III de Madrid. As part of my thesis I worked on an industry research project, developing systems and prototypes focused on data platforms and distributed systems.",
-            tags: ["React", "Next.js", "ASP.NET", "SQL", "HocusPocus", "SysMLv2"],
+              "MSc completed in July 2026 at Universidad Carlos III de Madrid.",
             logo: { src: "/uc3m.png", alt: "UC3M logo" },
             links: [{ href: "https://www.uc3m.es", label: "University website" }],
           },
@@ -43,8 +52,8 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "September, 2023 — December, 2025",
             title: "Full-Stack Developer — Axion",
             description:
-              "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure, designing REST APIs and backend services for asset and incident management and building map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving hundreds of users.",
-            tags: ["Angular", "Java", "Spring Boot", "SQL (Postgres)", "Redis", "CouchDB"],
+              "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure, designing REST APIs and backend services for asset and incident management and building map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving 100+ users.",
+            tags: ["NestJS", "Node.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "CouchDB", "Redis Stack", "Docker", "GitLab CI/CD", "Angular", "Microservices", "REST APIs", "Linux"],
             logo: { src: "/logo-axion.svg", alt: "Axion logo" },
             links: [{ href: "https://www.axion.es", label: "Company website" }],
           },
@@ -75,13 +84,22 @@ const Timeline = ({ lang }: TimelineProps) => {
         ]
       : [
           {
+            icon: "icon-[tabler--briefcase]",
+            date: "Marzo, 2026 — Julio, 2026",
+            title: "Software Developer — The Reuse Company",
+            role: "Industry Research Project",
+            description:
+              "Como parte de mi TFM trabajé en un proyecto de investigación con industria en The Reuse Company, desarrollando sistemas y prototipos con foco en plataformas de datos y sistemas distribuidos.",
+            tags: ["React", "Next.js", "ASP.NET", "SQL", "HocusPocus", "SysMLv2"],
+            logo: { src: "/reuse.png", alt: "Logo The Reuse Company" },
+            links: [{ href: "https://www.reusecompany.com/", label: "Web de la empresa" }],
+          },
+          {
             icon: "icon-[tabler--book]",
             date: "Septiembre, 2025 — Julio, 2026",
             title: "Máster en Ciencia y Tecnología Informática — UC3M",
-            role: "Software Developer — Industry Research Project",
             description:
-              "Máster finalizado en julio de 2026 en la Universidad Carlos III de Madrid. Como parte del TFM trabajé en un proyecto de investigación con industria, desarrollando sistemas y prototipos con foco en plataformas de datos y sistemas distribuidos.",
-            tags: ["React", "Next.js", "ASP.NET", "SQL", "HocusPocus", "SysMLv2"],
+              "Máster finalizado en julio de 2026 en la Universidad Carlos III de Madrid.",
             logo: { src: "/uc3m.png", alt: "Logo UC3M" },
             links: [{ href: "https://www.uc3m.es", label: "Web de la universidad" }],
           },
@@ -90,8 +108,8 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "Septiembre, 2023 — Diciembre, 2025",
             title: "Full-Stack Developer — Axion",
             description:
-              "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, diseñando APIs REST y servicios backend para gestión de activos e incidencias y construyendo dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a cientos de usuarios.",
-            tags: ["Angular", "Java", "Spring Boot", "SQL (Postgres)", "Redis", "CouchDB"],
+              "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, diseñando APIs REST y servicios backend para gestión de activos e incidencias y construyendo dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a más de 100 usuarios.",
+            tags: ["NestJS", "Node.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "CouchDB", "Redis Stack", "Docker", "GitLab CI/CD", "Angular", "Microservices", "REST APIs", "Linux"],
             logo: { src: "/logo-axion.svg", alt: "Logo Axion" },
             links: [{ href: "https://www.axion.es", label: "Web de la empresa" }],
           },
