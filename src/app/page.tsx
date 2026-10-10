@@ -17,6 +17,8 @@ type GithubRepo = {
   updated_at: string;
   icon?: React.ReactNode;
   demo_url?: string;
+  doc?: { url: string; kind: "paper" | "report" };
+  status?: "published" | "inProgress";
 };
 
 const GITHUB_USER = "davra02";
@@ -92,7 +94,23 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
       <path d="M12 12v4" />
     </svg>
   ),
-  HiseMotions2026: (
+  "req-classifier": (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6 3h9l4 4v14H6z" />
+      <path d="M15 3v4h4" />
+      <path d="M9 11h7M9 15h4" />
+      <path d="M14.5 17.5l1.5 1.5 3-3" />
+    </svg>
+  ),
+  "HISEMOTIONS @ IberLEF 2026": (
     <svg
       viewBox="0 0 24 24"
       className="h-4 w-4"
@@ -112,13 +130,14 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
 };
 const PINNED_PROJECTS: GithubRepo[] = [
   {
-    name: "SysML v2 Collaborative Modeler",
+    name: "req-classifier",
     description:
-      "Real-time collaborative diagramming application compliant with the SysML v2 standard, developed as part of my MSc thesis at UC3M. Built with React and Next.js on the frontend, an ASP.NET backend over PostgreSQL, and HocusPocus for conflict-free multi-user editing.",
-    html_url: "",
+      "Software requirements classifier and quality checker (ISO/IEC/IEEE 29148, INCOSE GtWR) that layers deterministic rules with Jev (TypeSafe AI) judgments, rigorously benchmarked against classical ML, a fine-tuned DeBERTa and Claude under a preregistered protocol.",
+    html_url: "https://github.com/davra02/req-classifier",
     fork: false,
     updated_at: "",
-    icon: PROJECT_ICONS["SysML v2 Collaborative Modeler"],
+    icon: PROJECT_ICONS["req-classifier"],
+    status: "inProgress",
   },
   {
     name: "Whispy",
@@ -128,6 +147,10 @@ const PINNED_PROJECTS: GithubRepo[] = [
     fork: false,
     updated_at: "",
     icon: PROJECT_ICONS.Whispy,
+    doc: {
+      url: "https://github.com/davra02/Whispy/blob/main/whispy_memorandum.pdf",
+      kind: "report",
+    },
   },
   {
     name: "n-dim_maze_planner",
@@ -140,6 +163,21 @@ const PINNED_PROJECTS: GithubRepo[] = [
     demo_url: "/maze_planner",
   },
   {
+    name: "HISEMOTIONS @ IberLEF 2026",
+    description:
+      "Multi-label emotion detection in 16th–17th century Spanish letters. Fine-tuned BETO, mDeBERTa and MarIA with LLM data augmentation and per-label threshold tuning (0.36 Macro F1 on the hidden test). System paper published in the IberLEF 2026 proceedings (CEUR-WS).",
+    html_url:
+      "https://github.com/davra02/old_spanish_emotions_classifier/tree/implementacion",
+    fork: false,
+    updated_at: "",
+    icon: PROJECT_ICONS["HISEMOTIONS @ IberLEF 2026"],
+    doc: {
+      url: "https://ceur-ws.org/Vol-4273/HISEMOTIONS_paper7.pdf",
+      kind: "paper",
+    },
+    status: "published",
+  },
+  {
     name: "PokeClass",
     description:
       "Pokémon image classifier built on a ResNet18 convolutional network fine-tuned with PyTorch, packaged as an Electron + React desktop app and shipped alongside a Streamlit demo for quick in-browser inference.",
@@ -149,13 +187,13 @@ const PINNED_PROJECTS: GithubRepo[] = [
     icon: PROJECT_ICONS.PokeClass,
   },
   {
-    name: "HiseMotions2026",
+    name: "SysML v2 Collaborative Modeler",
     description:
-      "Machine learning project for emotion classification in Old Spanish texts, combining NLP, historical language analysis, and model evaluation.",
-    html_url: "https://github.com/davra02/old_spanish_emotions_classifier",
+      "Real-time collaborative diagramming application compliant with the SysML v2 standard, developed as part of my MSc thesis at UC3M. Built with React and Next.js on the frontend, an ASP.NET backend over PostgreSQL, and HocusPocus for conflict-free multi-user editing.",
+    html_url: "",
     fork: false,
     updated_at: "",
-    icon: PROJECT_ICONS.HiseMotions2026,
+    icon: PROJECT_ICONS["SysML v2 Collaborative Modeler"],
   },
 ];
 
@@ -174,16 +212,16 @@ export async function generateMetadata({ searchParams }: HomeProps): Promise<Met
 
   const title =
     lang === "en"
-      ? "David Reyes Alés — Backend Software Engineer"
-      : "David Reyes Alés — Ingeniero de Software Backend";
+      ? "David Reyes Alés — Backend & Applied AI Engineer"
+      : "David Reyes Alés — Ingeniero de Software, Backend e IA aplicada";
   const description =
     lang === "en"
-      ? "Portfolio of David Reyes Alés. I build real-time platforms and backend services for operational environments. MSc at UC3M."
-      : "Portfolio de David Reyes Alés. Construyo plataformas en tiempo real y servicios backend para entornos operativos. MSc en UC3M.";
+      ? "Portfolio of David Reyes Alés. I build backend services and real-time platforms, and apply AI where it adds measurable value. MSc at UC3M."
+      : "Portfolio de David Reyes Alés. Construyo servicios backend y plataformas en tiempo real, y aplico IA donde aporta valor medible. MSc en UC3M.";
   const keywords =
     lang === "en"
-      ? ["David Reyes Alés", "backend", "software engineer", "distributed systems", "portfolio", "UC3M"]
-      : ["David Reyes Alés", "backend", "ingeniero de software", "sistemas distribuidos", "portfolio", "UC3M"];
+      ? ["David Reyes Alés", "backend", "software engineer", "applied AI", "NLP", "distributed systems", "portfolio", "UC3M"]
+      : ["David Reyes Alés", "backend", "ingeniero de software", "IA aplicada", "NLP", "sistemas distribuidos", "portfolio", "UC3M"];
 
   return {
     title,
@@ -229,6 +267,8 @@ export default async function Home({ searchParams }: HomeProps) {
           fallbackDescription: "Repositories could not be loaded. Please try again later.",
           footer: "David Reyes Alés",
           demoLabel: "Open app",
+          docLabel: { paper: "Read paper", report: "Read report" },
+          status: { published: "Published", inProgress: "In progress" },
         }
       : {
           career: "Mi carrera",
@@ -240,6 +280,8 @@ export default async function Home({ searchParams }: HomeProps) {
           fallbackDescription: "No se pudieron cargar los repositorios. Inténtalo más tarde.",
           footer: "Mi Portfolio",
           demoLabel: "Abrir aplicación",
+          docLabel: { paper: "Leer paper", report: "Leer memoria" },
+          status: { published: "Publicado", inProgress: "En desarrollo" },
         };
 
   const combinedProjects = PINNED_PROJECTS;
@@ -281,10 +323,20 @@ export default async function Home({ searchParams }: HomeProps) {
                   }
                   image={null}
                   link={project.html_url}
-                  badge={project.name === FEATURED_REPO ? text.featuredBadge : null}
+                  badge={
+                    project.name === FEATURED_REPO
+                      ? text.featuredBadge
+                      : project.status
+                        ? text.status[project.status]
+                        : null
+                  }
                   icon={project.icon}
                   demoUrl={project.demo_url}
                   demoLabel={text.demoLabel}
+                  docUrl={project.doc?.url}
+                  docLabel={
+                    project.doc ? text.docLabel[project.doc.kind] : undefined
+                  }
                 />
               ))
             ) : (

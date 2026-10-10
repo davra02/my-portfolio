@@ -11,7 +11,17 @@ interface ProjectCardProps {
   icon?: React.ReactNode;
   demoUrl?: string | null;
   demoLabel?: string;
+  docUrl?: string | null;
+  docLabel?: string;
 }
+
+const ctaClasses =
+  "inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] transition-opacity duration-200 hover:opacity-80";
+const ctaStyle = {
+  borderColor: "var(--border)",
+  background: "var(--accent-dim)",
+  color: "var(--accent)",
+};
 
 export default function ProjectCard({
   title,
@@ -22,11 +32,15 @@ export default function ProjectCard({
   icon,
   demoUrl,
   demoLabel,
+  docUrl,
+  docLabel,
 }: ProjectCardProps) {
   const imageSrc  = image?.trim();
   const linkHref  = link?.trim();
   const badgeText = badge?.trim();
   const demoHref  = demoUrl?.trim();
+  const docHref   = docUrl?.trim();
+  const hasCta    = Boolean(demoHref || docHref);
 
   const cardClasses =
     "group relative flex flex-col overflow-hidden rounded-xl border bg-[var(--surface)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--card-hover-shadow)] hover:border-[var(--card-hover-border)]";
@@ -116,43 +130,62 @@ export default function ProjectCard({
           {description}
         </p>
 
-        {/* Live app CTA — sits above the stretched card link */}
-        {demoHref && (
-          <div className="relative z-10 mt-4">
-            <a
-              href={demoHref}
-              className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] transition-opacity duration-200 hover:opacity-80"
-              style={{
-                borderColor: "var(--border)",
-                background: "var(--accent-dim)",
-                color: "var(--accent)",
-              }}
-            >
-              <svg
-                viewBox="0 0 20 20"
-                className="h-3.5 w-3.5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+        {/* CTAs (live app, paper/report) — sit above the stretched card link */}
+        {hasCta && (
+          <div className="relative z-10 mt-4 flex flex-wrap gap-2">
+            {demoHref && (
+              <a href={demoHref} className={ctaClasses} style={ctaStyle}>
+                <svg
+                  viewBox="0 0 20 20"
+                  className="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7.5 6.5l5 3.5-5 3.5z" />
+                  <circle cx="10" cy="10" r="7.5" />
+                </svg>
+                {demoLabel}
+              </a>
+            )}
+            {docHref && (
+              <a
+                href={docHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={ctaClasses}
+                style={ctaStyle}
               >
-                <path d="M7.5 6.5l5 3.5-5 3.5z" />
-                <circle cx="10" cy="10" r="7.5" />
-              </svg>
-              {demoLabel}
-            </a>
+                <svg
+                  viewBox="0 0 20 20"
+                  className="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 2.5h7l3 3v12H5z" />
+                  <path d="M12 2.5v3h3" />
+                  <path d="M7.5 10h5M7.5 13h3.5" />
+                </svg>
+                {docLabel}
+              </a>
+            )}
           </div>
         )}
       </div>
     </>
   );
 
-  // With a demo CTA the card can't be an <a> — nesting links is invalid HTML.
+  // With a CTA the card can't be an <a> — nesting links is invalid HTML.
   // The repo link is stretched behind the content instead, keeping the whole
   // card clickable while the CTA stays on top.
-  if (demoHref) {
+  if (hasCta) {
     return (
       <motion.div
         whileHover={{ scale: 1.015 }}
