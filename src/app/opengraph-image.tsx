@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "David Reyes Alés — Ingeniero de Software, Backend e IA aplicada";
+export const alt = "David Reyes Alés — Ingeniero de Software · Backend, infraestructura e IA aplicada";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -42,7 +42,7 @@ export default function OpengraphImage() {
             textTransform: "uppercase",
           }}
         >
-          Backend · IA aplicada · MSc UC3M
+          Backend · Infraestructura · IA aplicada
         </div>
 
         <div style={{ display: "flex", alignItems: "flex-end", marginTop: 28 }}>
@@ -57,7 +57,7 @@ export default function OpengraphImage() {
         <div style={{ display: "flex", alignItems: "center", marginTop: 24 }}>
           <div style={{ display: "flex", width: 56, height: 3, background: "#3b7ee8" }} />
           <div style={{ display: "flex", fontSize: 34, color: "#dae2ec", marginLeft: 20 }}>
-            Ingeniero de Software · Backend e IA aplicada
+            Ingeniero de Software · Backend, infra e IA aplicada
           </div>
         </div>
 
@@ -71,7 +71,7 @@ export default function OpengraphImage() {
             lineHeight: 1.5,
           }}
         >
-          Servicios backend y plataformas en tiempo real, con IA donde aporta valor.
+          Backend, sistemas en tiempo real e infraestructura, llevando la IA a software fiable.
         </div>
 
         <div

@@ -10,16 +10,16 @@ export default function AboutMe({ lang }: AboutMeProps) {
   const copy =
     lang === "en"
       ? {
-          role: "Backend · Applied AI · Real-time",
+          role: "Backend · Infrastructure · Applied AI",
           title: "David Reyes",
           description:
-            "I build backend services and real-time platforms, and apply AI where it adds measurable value. MSc in Computer Science and Technology from UC3M (2026), with 2.5+ years shipping to production and a paper published at IberLEF 2026.",
+            "Software engineer with 2.5+ years building backend services, real-time distributed systems and CI/CD infrastructure in production, now focused on bringing AI into reliable software. MSc in Computer Science and Technology from UC3M (2026) and a paper published at IberLEF 2026.",
           stats: [
             { value: "2.5+", label: "Years in prod." },
             { value: "85%", label: "CI/CD cut" },
             { value: "1", label: "Paper published" },
           ],
-          tags: ["Backend", "Applied AI", "NLP / ML", "Real-time", "Distributed systems", "Architecture"],
+          tags: ["Backend", "Infrastructure", "Applied AI", "Distributed systems", "Real-time", "NLP / ML"],
           cv: "Download CV",
           location: "Madrid, Spain",
           available: "Open to offers",
@@ -28,16 +28,16 @@ export default function AboutMe({ lang }: AboutMeProps) {
           github: "GitHub",
         }
       : {
-          role: "Backend · IA aplicada · Tiempo real",
+          role: "Backend · Infraestructura · IA aplicada",
           title: "David Reyes",
           description:
-            "Construyo servicios backend y plataformas en tiempo real, y aplico IA donde aporta valor medible. MSc en Ciencia y Tecnología Informática por la UC3M (2026), con más de dos años y medio en producción y un paper publicado en IberLEF 2026.",
+            "Ingeniero de software con más de dos años y medio construyendo servicios backend, sistemas distribuidos en tiempo real e infraestructura CI/CD en producción, ahora centrado en llevar la IA a software fiable. MSc en Ciencia y Tecnología Informática por la UC3M (2026) y paper publicado en IberLEF 2026.",
           stats: [
             { value: "2.5+", label: "Años en prod." },
             { value: "85%", label: "Reducción CI/CD" },
             { value: "1", label: "Paper publicado" },
           ],
-          tags: ["Backend", "IA aplicada", "NLP / ML", "Tiempo real", "Sistemas distribuidos", "Arquitectura"],
+          tags: ["Backend", "Infraestructura", "IA aplicada", "Sistemas distribuidos", "Tiempo real", "NLP / ML"],
           cv: "Descargar CV",
           location: "Madrid, España",
           available: "Abierto a ofertas",
@@ -124,7 +124,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
                 style={{ background: "var(--accent)" }}
               />
               <span className="text-sm text-[var(--muted)]">
-                {lang === "en" ? "Backend & Applied AI Engineer" : "Ingeniero de Software · Backend e IA aplicada"}
+                {lang === "en" ? "Software Engineer · Backend, Infra & Applied AI" : "Ingeniero de Software · Backend, infraestructura e IA aplicada"}
               </span>
             </div>
 

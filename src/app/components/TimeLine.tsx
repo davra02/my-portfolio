@@ -33,8 +33,8 @@ const Timeline = ({ lang }: TimelineProps) => {
             title: "Software Developer — The Reuse Company",
             role: "Industry Research Project",
             description:
-              "As part of my thesis I worked on an industry research project at The Reuse Company, developing systems and prototypes focused on data platforms and distributed systems.",
-            tags: ["React", "Next.js", "ASP.NET", "SQL", "HocusPocus", "SysMLv2"],
+              "As part of my MSc thesis I built a real-time collaborative modelling tool compliant with the SysML v2 standard, in an industry research project at The Reuse Company: an ASP.NET + PostgreSQL backend with HocusPocus (Yjs CRDTs) for conflict-free multi-user editing.",
+            tags: ["React", "Next.js", "ASP.NET", "PostgreSQL", "HocusPocus", "SysMLv2"],
             logo: { src: "/reuse.png", alt: "The Reuse Company logo" },
             links: [{ href: "https://www.reusecompany.com/", label: "Company website" }],
           },
@@ -52,7 +52,7 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "September, 2023 — December, 2025",
             title: "Full-Stack Developer — Axion",
             description:
-              "I worked on a real-time monitoring platform for nationwide broadcasting infrastructure, designing REST APIs and backend services for asset and incident management and building map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving 100+ users. I combined the final stretch at Axion with finishing my BSc and starting my MSc at UC3M.",
+              "I joined a 3-person team to rebuild from scratch a real-time monitoring platform for nationwide broadcasting infrastructure, a project that had failed over 1.5 years of prior attempts: we delivered it in 6 months and it was adopted by 100+ operations users. I designed REST APIs and backend services for asset and incident management and built map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving 100+ users. I also onboarded an intern with reusable project templates. I combined the final stretch at Axion with finishing my BSc and starting my MSc at UC3M.",
             tags: ["NestJS", "Node.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "CouchDB", "Redis Stack", "Docker", "GitLab CI/CD", "Angular", "Microservices", "REST APIs", "Linux"],
             logo: { src: "/logo-axion.svg", alt: "Axion logo" },
             links: [{ href: "https://www.axion.es", label: "Company website" }],
@@ -88,8 +88,8 @@ const Timeline = ({ lang }: TimelineProps) => {
             title: "Software Developer — The Reuse Company",
             role: "Industry Research Project",
             description:
-              "Como parte de mi TFM trabajé en un proyecto de investigación con industria en The Reuse Company, desarrollando sistemas y prototipos con foco en plataformas de datos y sistemas distribuidos.",
-            tags: ["React", "Next.js", "ASP.NET", "SQL", "HocusPocus", "SysMLv2"],
+              "Como parte de mi TFM construí una herramienta de modelado colaborativo en tiempo real conforme al estándar SysML v2, en un proyecto de investigación con industria en The Reuse Company: backend en ASP.NET + PostgreSQL y HocusPocus (CRDTs de Yjs) para la edición multiusuario sin conflictos.",
+            tags: ["React", "Next.js", "ASP.NET", "PostgreSQL", "HocusPocus", "SysMLv2"],
             logo: { src: "/reuse.png", alt: "Logo The Reuse Company" },
             links: [{ href: "https://www.reusecompany.com/", label: "Web de la empresa" }],
           },
@@ -107,7 +107,7 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "Septiembre, 2023 — Diciembre, 2025",
             title: "Full-Stack Developer — Axion",
             description:
-              "Trabajé en una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, diseñando APIs REST y servicios backend para gestión de activos e incidencias y construyendo dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a más de 100 usuarios. Compaginé la última etapa en Axion con el cierre de la carrera y el inicio del máster en la UC3M.",
+              "Me uní a un equipo de 3 personas para reconstruir desde cero una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, un proyecto que llevaba 1,5 años fracasando: la entregamos en 6 meses y la adoptaron más de 100 usuarios de operaciones. Diseñé APIs REST y servicios backend para gestión de activos e incidencias y construí dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a más de 100 usuarios. También formé a un becario con plantillas de proyecto reutilizables. Compaginé la última etapa en Axion con el cierre de la carrera y el inicio del máster en la UC3M.",
             tags: ["NestJS", "Node.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "CouchDB", "Redis Stack", "Docker", "GitLab CI/CD", "Angular", "Microservices", "REST APIs", "Linux"],
             logo: { src: "/logo-axion.svg", alt: "Logo Axion" },
             links: [{ href: "https://www.axion.es", label: "Web de la empresa" }],

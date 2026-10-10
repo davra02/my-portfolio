@@ -212,16 +212,16 @@ export async function generateMetadata({ searchParams }: HomeProps): Promise<Met
 
   const title =
     lang === "en"
-      ? "David Reyes Alés — Backend & Applied AI Engineer"
-      : "David Reyes Alés — Ingeniero de Software, Backend e IA aplicada";
+      ? "David Reyes Alés — Software Engineer · Backend, Infra & Applied AI"
+      : "David Reyes Alés — Ingeniero de Software · Backend, infraestructura e IA aplicada";
   const description =
     lang === "en"
-      ? "Portfolio of David Reyes Alés. I build backend services and real-time platforms, and apply AI where it adds measurable value. MSc at UC3M."
-      : "Portfolio de David Reyes Alés. Construyo servicios backend y plataformas en tiempo real, y aplico IA donde aporta valor medible. MSc en UC3M.";
+      ? "Portfolio of David Reyes Alés. Software engineer building backend services, real-time distributed systems and infrastructure, now focused on bringing AI into reliable software. MSc at UC3M."
+      : "Portfolio de David Reyes Alés. Ingeniero de software: servicios backend, sistemas distribuidos en tiempo real e infraestructura, ahora centrado en llevar la IA a software fiable. MSc en UC3M.";
   const keywords =
     lang === "en"
-      ? ["David Reyes Alés", "backend", "software engineer", "applied AI", "NLP", "distributed systems", "portfolio", "UC3M"]
-      : ["David Reyes Alés", "backend", "ingeniero de software", "IA aplicada", "NLP", "sistemas distribuidos", "portfolio", "UC3M"];
+      ? ["David Reyes Alés", "backend", "software engineer", "infrastructure", "applied AI", "NLP", "distributed systems", "portfolio", "UC3M"]
+      : ["David Reyes Alés", "backend", "ingeniero de software", "infraestructura", "IA aplicada", "NLP", "sistemas distribuidos", "portfolio", "UC3M"];
 
   return {
     title,
