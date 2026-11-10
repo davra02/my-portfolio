@@ -18,6 +18,7 @@ type TimelineEntry = {
   title: string;
   role?: string;
   description: string;
+  bullets?: string[];
   tags?: string[];
   logo?: { src: string; alt: string };
   links: TimelineLink[];
@@ -61,7 +62,16 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "September, 2023 — December, 2025",
             title: "Full-Stack Developer — Axion",
             description:
-              "I joined a 3-person team to rebuild from scratch a real-time monitoring platform for nationwide broadcasting infrastructure, a project that had failed over 1.5 years of prior attempts: we delivered it in 6 months and it was adopted by 100+ operations users. I designed REST APIs and backend services for asset and incident management and built map-based operational dashboards. I introduced Redis Stack as a caching layer, cutting load times by 50-60%; I built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%; and I expanded an internal login module into a company-wide authentication microservice serving 100+ users. I also onboarded an intern with reusable project templates. I combined the final stretch at Axion with finishing my BSc and starting my MSc at UC3M.",
+              "I joined a 3-person team to rebuild from scratch a real-time monitoring platform for nationwide broadcasting infrastructure, a project that had failed over 1.5 years of prior attempts. We delivered it in 6 months and it was adopted by 100+ operations users.",
+            bullets: [
+              "Designed REST APIs and backend services for asset and incident management, and built map-based operational dashboards.",
+              "Introduced Redis Stack as a caching layer, cutting load times by 50-60%.",
+              "Built the GitLab CI/CD pipeline from scratch, reducing deployment time by over 85%.",
+              "Expanded an internal login module into a company-wide authentication microservice serving 100+ users.",
+              "Onboarded an intern with reusable project templates.",
+              "Combined the final stretch with finishing my BSc and starting my MSc at UC3M.",
+            ],
+
             tags: ["NestJS", "Node.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "CouchDB", "Redis Stack", "Docker", "GitLab CI/CD", "Angular", "Microservices", "REST APIs", "Linux"],
             logo: { src: "/logo-axion.svg", alt: "Axion logo" },
             links: [{ href: "https://www.axion.es", label: "Company website" }],
@@ -125,7 +135,16 @@ const Timeline = ({ lang }: TimelineProps) => {
             date: "Septiembre, 2023 — Diciembre, 2025",
             title: "Full-Stack Developer — Axion",
             description:
-              "Me uní a un equipo de 3 personas para reconstruir desde cero una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, un proyecto que llevaba 1,5 años fracasando: la entregamos en 6 meses y la adoptaron más de 100 usuarios de operaciones. Diseñé APIs REST y servicios backend para gestión de activos e incidencias y construí dashboards operativos con visualización en mapa. Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%; construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%; y amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a más de 100 usuarios. También formé a un becario con plantillas de proyecto reutilizables. Compaginé la última etapa en Axion con el cierre de la carrera y el inicio del máster en la UC3M.",
+              "Me uní a un equipo de 3 personas para reconstruir desde cero una plataforma de monitorización en tiempo real para infraestructura de radiodifusión a nivel nacional, un proyecto que llevaba 1,5 años fracasando. La entregamos en 6 meses y la adoptaron más de 100 usuarios de operaciones.",
+            bullets: [
+              "Diseñé APIs REST y servicios backend para gestión de activos e incidencias, y construí dashboards operativos con visualización en mapa.",
+              "Introduje Redis Stack como capa de caché, reduciendo los tiempos de carga un 50-60%.",
+              "Construí el pipeline de CI/CD en GitLab desde cero, recortando el tiempo de despliegue más de un 85%.",
+              "Amplié un módulo de login interno hasta convertirlo en un microservicio de autenticación corporativo que da servicio a más de 100 usuarios.",
+              "Formé a un becario con plantillas de proyecto reutilizables.",
+              "Compaginé la última etapa con el cierre de la carrera y el inicio del máster en la UC3M.",
+            ],
+
             tags: ["NestJS", "Node.js", "TypeScript", "Java", "Spring Boot", "PostgreSQL", "CouchDB", "Redis Stack", "Docker", "GitLab CI/CD", "Angular", "Microservices", "REST APIs", "Linux"],
             logo: { src: "/logo-axion.svg", alt: "Logo Axion" },
             links: [{ href: "https://www.axion.es", label: "Web de la empresa" }],
@@ -180,6 +199,14 @@ const Timeline = ({ lang }: TimelineProps) => {
           <p className="mt-2 max-w-[72ch] text-sm leading-relaxed text-[var(--muted)]">
             {entry.description}
           </p>
+
+          {entry.bullets && (
+            <ul className="mt-3 max-w-[72ch] list-disc space-y-1.5 ps-5 text-sm leading-relaxed text-[var(--muted)] marker:text-[var(--accent)]">
+              {entry.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+          )}
 
           {entry.tags && (
             <div className="mt-3 flex flex-wrap gap-2">

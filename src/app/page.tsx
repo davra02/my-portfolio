@@ -253,7 +253,6 @@ export default async function Home({ searchParams }: HomeProps) {
       ? {
           career: "My Career",
           projects: "Projects",
-          footer: "David Reyes Alés",
           demoLabel: "Open app",
           openLabel: "Open project",
           docLabel: { paper: "Read paper", report: "Read report" },
@@ -262,7 +261,6 @@ export default async function Home({ searchParams }: HomeProps) {
       : {
           career: "Mi carrera",
           projects: "Proyectos",
-          footer: "Mi Portfolio",
           demoLabel: "Abrir aplicación",
           openLabel: "Abrir proyecto",
           docLabel: { paper: "Leer paper", report: "Leer memoria" },
@@ -337,8 +335,26 @@ export default async function Home({ searchParams }: HomeProps) {
             ))}
           </div>
         </section>
-        <footer className="mx-auto mt-16 max-w-6xl px-4 pb-10 text-sm text-[var(--muted)] sm:mt-20 sm:px-6">
-          © 2026 - {text.footer}
+        <footer className="mx-auto mt-16 flex max-w-6xl flex-col gap-3 border-t border-[var(--border)] px-4 pb-10 pt-6 text-sm text-[var(--muted)] sm:mt-20 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <span>© {new Date().getFullYear()} David Reyes Alés</span>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            {[
+              { href: "mailto:davidreyesales@gmail.com", label: "Email" },
+              { href: "https://www.linkedin.com/in/david-reyes-ales/", label: "LinkedIn" },
+              { href: `https://github.com/${GITHUB_USER}`, label: "GitHub" },
+            ].map(({ href, label }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target={href.startsWith("mailto") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                  className="transition-colors duration-200 hover:text-[var(--text)]"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </footer>
       </div>
     </div>
