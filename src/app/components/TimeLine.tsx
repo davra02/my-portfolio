@@ -29,6 +29,15 @@ const Timeline = ({ lang }: TimelineProps) => {
       ? [
           {
             icon: "icon-[tabler--briefcase]",
+            date: "November, 2026 — Present",
+            title: "Software Engineer — Liferay",
+            description:
+              "I joined Liferay as a Software Engineer on November 3, 2026, and relocated to Madrid for the role.",
+            logo: { src: "/liferay.png", alt: "Liferay logo" },
+            links: [{ href: "https://www.liferay.com", label: "Company website" }],
+          },
+          {
+            icon: "icon-[tabler--briefcase]",
             date: "March, 2026 — July, 2026",
             title: "Software Developer — The Reuse Company",
             role: "Industry Research Project",
@@ -82,6 +91,15 @@ const Timeline = ({ lang }: TimelineProps) => {
           },
         ]
       : [
+          {
+            icon: "icon-[tabler--briefcase]",
+            date: "Noviembre, 2026 — Actualidad",
+            title: "Software Engineer — Liferay",
+            description:
+              "Me incorporé a Liferay como Software Engineer el 3 de noviembre de 2026, y me mudé a Madrid por este puesto.",
+            logo: { src: "/liferay.png", alt: "Logo Liferay" },
+            links: [{ href: "https://www.liferay.com", label: "Web de la empresa" }],
+          },
           {
             icon: "icon-[tabler--briefcase]",
             date: "Marzo, 2026 — Julio, 2026",
