@@ -13,6 +13,7 @@ interface ProjectCardProps {
   demoLabel?: string;
   docUrl?: string | null;
   docLabel?: string;
+  openLabel?: string;
 }
 
 const ctaClasses =
@@ -34,6 +35,7 @@ export default function ProjectCard({
   demoLabel,
   docUrl,
   docLabel,
+  openLabel = "Abrir proyecto",
 }: ProjectCardProps) {
   const imageSrc  = image?.trim();
   const linkHref  = link?.trim();
@@ -100,11 +102,11 @@ export default function ProjectCard({
                   {icon}
                 </span>
               )}
-              <h2
+              <h3
                 className="text-[0.9375rem] font-semibold leading-snug text-[var(--text)]"
               >
                 {title}
-              </h2>
+              </h3>
             </div>
           </div>
 
@@ -198,7 +200,7 @@ export default function ProjectCard({
             href={linkHref}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Abrir proyecto ${title} en GitHub`}
+            aria-label={`${openLabel}: ${title}`}
             className="absolute inset-0 z-0"
           />
         )}
@@ -217,7 +219,7 @@ export default function ProjectCard({
         target="_blank"
         rel="noopener noreferrer"
         className={cardClasses}
-        aria-label={`Abrir proyecto ${title}`}
+        aria-label={`${openLabel}: ${title}`}
       >
         {cardContent}
       </motion.a>

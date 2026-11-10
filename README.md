@@ -18,9 +18,8 @@ Está disponible en **español e inglés** (`?lang=es` / `?lang=en`, español po
 
 - [Next.js 15](https://nextjs.org) (App Router) + [React 19](https://react.dev)
 - [TypeScript](https://www.typescriptlang.org)
-- [Tailwind CSS](https://tailwindcss.com) con [daisyUI](https://daisyui.com) y [FlyonUI](https://flyonui.com)
+- [Tailwind CSS](https://tailwindcss.com) con [FlyonUI](https://flyonui.com)
 - [Framer Motion](https://www.framer.com/motion/) para animaciones
-- [tsParticles](https://particles.js.org) para el fondo interactivo
 
 ## Desarrollo
 
@@ -42,16 +41,18 @@ npm run lint    # ejecuta ESLint
 
 ```
 public/                  # imágenes, logos y CV
+src/
+  middleware.ts          # pasa ?lang= al layout para <html lang>
 src/app/
   page.tsx               # composición de la página y datos de proyectos
   layout.tsx             # layout raíz y metadatos
   globals.css            # estilos globales y variables de tema
+  robots.ts, sitemap.ts  # robots.txt y sitemap.xml
   components/
     AboutMe.tsx          # sección de presentación
     TimeLine.tsx         # trayectoria académica y profesional
     ProyectCard.tsx      # tarjeta de proyecto
     Navbar.tsx           # navegación, idioma y tema
-    Particle.tsx         # fondo de partículas
 ```
 
 Los textos de cada sección viven junto a su componente, con las variantes en español e inglés seleccionadas mediante la prop `lang`.
