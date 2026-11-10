@@ -14,6 +14,7 @@ interface NavbarProps {
 export default function Navbar({ lang }: NavbarProps) {
   const [theme, setTheme] = useState<ThemeMode | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem(
@@ -47,8 +48,8 @@ export default function Navbar({ lang }: NavbarProps) {
 
   const labels =
     lang === "en"
-      ? { about: "About", career: "Career", projects: "Projects" }
-      : { about: "Sobre mí", career: "Carrera", projects: "Proyectos" };
+      ? { about: "About", career: "Career", projects: "Projects", menu: "Menu" }
+      : { about: "Sobre mí", career: "Carrera", projects: "Proyectos", menu: "Menú" };
 
   const languageOptions = [
     { code: "es" as const, href: "/",        label: "ES" },
@@ -65,11 +66,11 @@ export default function Navbar({ lang }: NavbarProps) {
     <nav
       className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled
+        background: scrolled || menuOpen
           ? "var(--nav-bg)"
           : "transparent",
-        backdropFilter: scrolled ? "blur(14px)" : "none",
-        borderBottom: scrolled
+        backdropFilter: scrolled || menuOpen ? "blur(14px)" : "none",
+        borderBottom: scrolled || menuOpen
           ? "1px solid var(--border)"
           : "1px solid transparent",
       }}
@@ -92,7 +93,7 @@ export default function Navbar({ lang }: NavbarProps) {
         </Link>
 
         {/* Right controls */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2.5 sm:gap-4">
 
           {/* Nav links */}
           <ul className="hidden items-center gap-5 sm:flex">
@@ -173,8 +174,48 @@ export default function Navbar({ lang }: NavbarProps) {
             )}
           </button>
 
+          {/* Mobile menu toggle */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={labels.menu}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            className="flex h-8 w-8 items-center justify-center rounded-full border text-[var(--muted)] transition-all duration-200 hover:border-[var(--accent)] hover:text-[var(--text)] sm:hidden"
+            style={{ borderColor: "var(--border)", background: "var(--surface)" }}
+          >
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+              {menuOpen ? (
+                <path d="M6 6l12 12M18 6L6 18" />
+              ) : (
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              )}
+            </svg>
+          </button>
+
         </div>
       </div>
+
+      {/* Mobile nav panel */}
+      {menuOpen && (
+        <ul
+          id="mobile-nav"
+          className="mx-auto flex max-w-6xl flex-col px-5 pb-3 sm:hidden"
+        >
+          {navLinks.map(({ href, label }) => (
+            <li key={href}>
+              <a
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className="block border-t py-3 text-xs uppercase tracking-[0.22em] text-[var(--muted)] transition-colors duration-200 hover:text-[var(--text)]"
+                style={{ borderColor: "var(--border)" }}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   );
 }

@@ -83,7 +83,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
   return (
     <section
       id="about"
-      className="relative flex min-h-[calc(100vh-64px)] flex-col justify-center px-5 pb-20 pt-28 sm:px-6"
+      className="relative flex flex-col justify-center px-5 pb-10 pt-6 sm:px-6 lg:min-h-[calc(100vh-64px)] lg:pb-20 lg:pt-28"
     >
       {/* Decorative accent blob */}
       <div
@@ -104,18 +104,29 @@ export default function AboutMe({ lang }: AboutMeProps) {
         </p>
 
         {/* Main grid */}
-        <div className="mt-10 grid grid-cols-1 items-center gap-14 lg:grid-cols-[1fr,300px] lg:gap-20">
+        <div className="mt-6 grid grid-cols-1 items-center gap-14 lg:mt-10 lg:grid-cols-[1fr,300px] lg:gap-20">
 
           {/* ── Left: content ── */}
           <div>
-            {/* Name headline */}
-            <h1
-              className="anim-fade-up delay-1 font-semibold leading-[1.02] tracking-tight"
-              style={{ fontSize: "clamp(2.8rem, 7.5vw, 5.8rem)" }}
-            >
-              {copy.title}
-              <span style={{ color: "var(--accent)" }}>.</span>
-            </h1>
+            {/* Name headline (with a compact avatar below lg, where the large photo is hidden) */}
+            <div className="anim-fade-up delay-1 flex items-center gap-4">
+              <Image
+                src="/yo.jpeg"
+                alt=""
+                width={64}
+                height={64}
+                className="h-16 w-16 flex-shrink-0 rounded-full border object-cover lg:hidden"
+                style={{ borderColor: "var(--border)" }}
+                priority
+              />
+              <h1
+                className="font-semibold leading-[1.02] tracking-tight"
+                style={{ fontSize: "clamp(2.4rem, 7.5vw, 5.8rem)" }}
+              >
+                {copy.title}
+                <span style={{ color: "var(--accent)" }}>.</span>
+              </h1>
+            </div>
 
             {/* Divider + subtitle */}
             <div className="anim-slide-right delay-2 mt-3 flex items-center gap-3">
@@ -128,17 +139,26 @@ export default function AboutMe({ lang }: AboutMeProps) {
               </span>
             </div>
 
+            {/* Location (the photo badge carries it on lg+) */}
+            <p className="anim-fade-in delay-2 mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)] lg:hidden">
+              <svg viewBox="0 0 24 24" className="h-3 w-3 flex-shrink-0 text-[var(--accent)]" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="12" cy="11" r="2" />
+              </svg>
+              {copy.location}
+            </p>
+
             {/* Description */}
-            <p className="anim-fade-up delay-3 mt-6 max-w-[54ch] text-[0.9375rem] leading-[1.85] text-[var(--muted)]">
+            <p className="anim-fade-up delay-3 mt-5 max-w-[54ch] text-[0.9375rem] leading-[1.85] text-[var(--muted)]">
               {copy.description}
             </p>
 
             {/* Stats row */}
-            <div className="anim-fade-up delay-4 mt-8 grid grid-cols-3 gap-3">
+            <div className="anim-fade-up delay-4 mt-6 grid grid-cols-3 gap-3 lg:mt-8">
               {copy.stats.map(({ value, label }) => (
                 <div
                   key={label}
-                  className="rounded-xl border bg-[var(--surface)] p-4 transition-shadow duration-300 hover:shadow-[var(--shadow)]"
+                  className="rounded-xl border bg-[var(--surface)] p-3 transition-shadow sm:p-4 duration-300 hover:shadow-[var(--shadow)]"
                   style={{ borderColor: "var(--border)" }}
                 >
                   <div className="text-[1.75rem] font-semibold leading-none" style={{ color: "var(--text)" }}>
@@ -152,7 +172,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
             </div>
 
             {/* CTA + social pill group */}
-            <div className="anim-fade-up delay-5 mt-8 flex flex-wrap items-center gap-3">
+            <div className="anim-fade-up delay-5 mt-6 flex flex-wrap items-center gap-3 lg:mt-8">
               {/* Primary CTA */}
               <a
                 href="/David_Reyes_Ales_CV.pdf"
@@ -187,12 +207,12 @@ export default function AboutMe({ lang }: AboutMeProps) {
                 ))}
               </div>
 
-              {/* Available badge */}
+              {/* Current role badge */}
               <div
                 className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]"
                 style={{ borderColor: "var(--border)", background: "var(--surface)" }}
               >
-                <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent)" }} />
                 {copy.available}
               </div>
             </div>
@@ -212,7 +232,7 @@ export default function AboutMe({ lang }: AboutMeProps) {
           </div>
 
           {/* ── Right: image ── */}
-          <div className="anim-scale-in delay-2 relative mx-auto w-full max-w-[300px] lg:mx-0">
+          <div className="anim-scale-in delay-2 relative mx-auto hidden w-full max-w-[300px] lg:mx-0 lg:block">
             {/* Decorative offset frame */}
             <div
               aria-hidden="true"
