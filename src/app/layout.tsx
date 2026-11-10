@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Sora, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -29,13 +30,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Set by src/middleware.ts from ?lang=, so <html lang> matches the content.
+  const lang = (await headers()).get("x-lang") === "en" ? "en" : "es";
+
   return (
-    <html lang="es">
+    <html lang={lang}>
       <body
         className={`${sora.variable} ${geistMono.variable} antialiased`}
       >

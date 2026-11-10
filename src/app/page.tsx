@@ -8,27 +8,20 @@ import Timeline from "./components/TimeLine";
 type Lang = "es" | "en";
 
 const SITE_URL = "https://www.davidreyesales.com";
+const GITHUB_USER = "davra02";
 
-type GithubRepo = {
+type Localized = { es: string; en: string };
+
+type Project = {
   name: string;
-  description: string | null;
+  description: Localized;
   html_url: string;
-  fork: boolean;
-  updated_at: string;
   icon?: React.ReactNode;
   demo_url?: string;
   doc?: { url: string; kind: "paper" | "report" };
   status?: "published" | "inProgress";
 };
 
-const GITHUB_USER = "davra02";
-const FEATURED_REPO = "Whispy-Client";
-const FEATURED_DESCRIPTION_ES =
-  "Aplicación social de mensajería descentralizada con Ceramic Network. " +
-  "Cifrado extremo a extremo en mensajes privados y uso de blockchain para ciertas funciones.";
-const FEATURED_DESCRIPTION_EN =
-  "Decentralized social messaging app built on Ceramic Network. " +
-  "End-to-end encryption for private messages and blockchain-backed features.";
 const PROJECT_ICONS: Record<string, React.ReactNode> = {
   Whispy: (
     <svg
@@ -128,24 +121,24 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
 };
-const PINNED_PROJECTS: GithubRepo[] = [
+const PROJECTS: Project[] = [
   {
     name: "req-classifier",
-    description:
-      "Software requirements classifier and quality checker (ISO/IEC/IEEE 29148, INCOSE GtWR) that layers deterministic rules with Jev (TypeSafe AI) judgments, rigorously benchmarked against classical ML, a fine-tuned DeBERTa and Claude under a preregistered protocol.",
+    description: {
+      es: "Clasificador y verificador de calidad de requisitos de software (ISO/IEC/IEEE 29148, INCOSE GtWR) que combina reglas deterministas con juicios de Jev (TypeSafe AI), evaluado con rigor frente a ML clásico, un DeBERTa con fine-tuning y Claude bajo un protocolo prerregistrado.",
+      en: "Software requirements classifier and quality checker (ISO/IEC/IEEE 29148, INCOSE GtWR) that layers deterministic rules with Jev (TypeSafe AI) judgments, rigorously benchmarked against classical ML, a fine-tuned DeBERTa and Claude under a preregistered protocol.",
+    },
     html_url: "https://github.com/davra02/req-classifier",
-    fork: false,
-    updated_at: "",
     icon: PROJECT_ICONS["req-classifier"],
     status: "inProgress",
   },
   {
     name: "Whispy",
-    description:
-      "Decentralized end-to-end encrypted messaging platform exploring user-owned identity, distributed data storage, and privacy-first social communication.",
+    description: {
+      es: "Plataforma de mensajería descentralizada con cifrado de extremo a extremo que explora la identidad en manos del usuario, el almacenamiento distribuido de datos y una comunicación social centrada en la privacidad.",
+      en: "Decentralized end-to-end encrypted messaging platform exploring user-owned identity, distributed data storage, and privacy-first social communication.",
+    },
     html_url: "https://github.com/davra02/Whispy",
-    fork: false,
-    updated_at: "",
     icon: PROJECT_ICONS.Whispy,
     doc: {
       url: "https://github.com/davra02/Whispy/blob/main/whispy_memorandum.pdf",
@@ -154,22 +147,22 @@ const PINNED_PROJECTS: GithubRepo[] = [
   },
   {
     name: "n-dim_maze_planner",
-    description:
-      "AI planning toolkit for temporal multi-agent maze problems in PDDL, featuring OPTIC integration, interactive 3D visualization, graph export, and benchmarking.",
+    description: {
+      es: "Toolkit de planificación automática para problemas temporales multiagente de laberintos en PDDL, con integración de OPTIC, visualización 3D interactiva, exportación de grafos y benchmarking.",
+      en: "AI planning toolkit for temporal multi-agent maze problems in PDDL, featuring OPTIC integration, interactive 3D visualization, graph export, and benchmarking.",
+    },
     html_url: "https://github.com/davra02/n-dim_maze_planner",
-    fork: false,
-    updated_at: "",
     icon: PROJECT_ICONS["n-dim_maze_planner"],
     demo_url: "/maze_planner",
   },
   {
     name: "HISEMOTIONS @ IberLEF 2026",
-    description:
-      "Multi-label emotion detection in 16th–17th century Spanish letters. Fine-tuned BETO, mDeBERTa and MarIA with LLM data augmentation and per-label threshold tuning (0.36 Macro F1 on the hidden test). System paper published in the IberLEF 2026 proceedings (CEUR-WS).",
+    description: {
+      es: "Detección multietiqueta de emociones en cartas en español de los siglos XVI y XVII. Fine-tuning de BETO, mDeBERTa y MarIA con aumento de datos mediante LLM y ajuste de umbrales por etiqueta (0,36 de Macro F1 en el test oculto). Paper de sistema publicado en las actas de IberLEF 2026 (CEUR-WS).",
+      en: "Multi-label emotion detection in 16th–17th century Spanish letters. Fine-tuned BETO, mDeBERTa and MarIA with LLM data augmentation and per-label threshold tuning (0.36 Macro F1 on the hidden test). System paper published in the IberLEF 2026 proceedings (CEUR-WS).",
+    },
     html_url:
       "https://github.com/davra02/old_spanish_emotions_classifier/tree/implementacion",
-    fork: false,
-    updated_at: "",
     icon: PROJECT_ICONS["HISEMOTIONS @ IberLEF 2026"],
     doc: {
       url: "https://ceur-ws.org/Vol-4273/HISEMOTIONS_paper7.pdf",
@@ -179,20 +172,20 @@ const PINNED_PROJECTS: GithubRepo[] = [
   },
   {
     name: "PokeClass",
-    description:
-      "Pokémon image classifier built on a ResNet18 convolutional network fine-tuned with PyTorch, packaged as an Electron + React desktop app and shipped alongside a Streamlit demo for quick in-browser inference.",
+    description: {
+      es: "Clasificador de imágenes de Pokémon basado en una red convolucional ResNet18 con fine-tuning en PyTorch, empaquetado como aplicación de escritorio con Electron + React y acompañado de una demo en Streamlit para inferencia rápida desde el navegador.",
+      en: "Pokémon image classifier built on a ResNet18 convolutional network fine-tuned with PyTorch, packaged as an Electron + React desktop app and shipped alongside a Streamlit demo for quick in-browser inference.",
+    },
     html_url: "https://github.com/davra02/PokeClass",
-    fork: false,
-    updated_at: "",
     icon: PROJECT_ICONS.PokeClass,
   },
   {
     name: "SysML v2 Collaborative Modeler",
-    description:
-      "Real-time collaborative diagramming application compliant with the SysML v2 standard, developed as part of my MSc thesis at UC3M. Built with React and Next.js on the frontend, an ASP.NET backend over PostgreSQL, and HocusPocus for conflict-free multi-user editing.",
+    description: {
+      es: "Aplicación de diagramado colaborativo en tiempo real conforme al estándar SysML v2, desarrollada como parte de mi TFM en la UC3M. Frontend en React y Next.js, backend en ASP.NET sobre PostgreSQL y HocusPocus para la edición multiusuario sin conflictos.",
+      en: "Real-time collaborative diagramming application compliant with the SysML v2 standard, developed as part of my MSc thesis at UC3M. Built with React and Next.js on the frontend, an ASP.NET backend over PostgreSQL, and HocusPocus for conflict-free multi-user editing.",
+    },
     html_url: "",
-    fork: false,
-    updated_at: "",
     icon: PROJECT_ICONS["SysML v2 Collaborative Modeler"],
   },
 ];
@@ -260,34 +253,50 @@ export default async function Home({ searchParams }: HomeProps) {
       ? {
           career: "My Career",
           projects: "Projects",
-          featuredDescription: FEATURED_DESCRIPTION_EN,
-          noDescription: "No description",
-          featuredBadge: "Featured",
-          fallbackTitle: "GitHub Projects",
-          fallbackDescription: "Repositories could not be loaded. Please try again later.",
           footer: "David Reyes Alés",
           demoLabel: "Open app",
+          openLabel: "Open project",
           docLabel: { paper: "Read paper", report: "Read report" },
           status: { published: "Published", inProgress: "In progress" },
         }
       : {
           career: "Mi carrera",
           projects: "Proyectos",
-          featuredDescription: FEATURED_DESCRIPTION_ES,
-          noDescription: "Sin descripción",
-          featuredBadge: "Destacado",
-          fallbackTitle: "Proyectos en GitHub",
-          fallbackDescription: "No se pudieron cargar los repositorios. Inténtalo más tarde.",
           footer: "Mi Portfolio",
           demoLabel: "Abrir aplicación",
+          openLabel: "Abrir proyecto",
           docLabel: { paper: "Leer paper", report: "Leer memoria" },
           status: { published: "Publicado", inProgress: "En desarrollo" },
         };
 
-  const combinedProjects = PINNED_PROJECTS;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "David Reyes Alés",
+    url: SITE_URL,
+    image: `${SITE_URL}/yo.jpeg`,
+    jobTitle: "Software Engineer",
+    worksFor: { "@type": "Organization", name: "Liferay", url: "https://www.liferay.com" },
+    alumniOf: [
+      { "@type": "CollegeOrUniversity", name: "Universidad Carlos III de Madrid", url: "https://www.uc3m.es" },
+      { "@type": "CollegeOrUniversity", name: "Universidad de Sevilla", url: "https://www.us.es" },
+    ],
+    address: { "@type": "PostalAddress", addressLocality: "Madrid", addressCountry: "ES" },
+    knowsLanguage: ["es", "en"],
+    sameAs: [
+      "https://www.linkedin.com/in/david-reyes-ales/",
+      `https://github.com/${GITHUB_USER}`,
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       {/* Navbar siempre visible */}
       <div className="fixed top-0 left-0 w-full z-50">
         <Navbar lang={lang} />
@@ -311,42 +320,21 @@ export default async function Home({ searchParams }: HomeProps) {
             <span className="hidden h-px flex-1 bg-[var(--border)] sm:block sm:ml-6" />
           </div>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {combinedProjects.length > 0 ? (
-              combinedProjects.map((project, index) => (
-                <ProjectCard
-                  key={`${project.html_url}-${index}`}
-                  title={project.name}
-                  description={
-                    project.name === FEATURED_REPO
-                      ? text.featuredDescription
-                      : project.description ?? text.noDescription
-                  }
-                  image={null}
-                  link={project.html_url}
-                  badge={
-                    project.name === FEATURED_REPO
-                      ? text.featuredBadge
-                      : project.status
-                        ? text.status[project.status]
-                        : null
-                  }
-                  icon={project.icon}
-                  demoUrl={project.demo_url}
-                  demoLabel={text.demoLabel}
-                  docUrl={project.doc?.url}
-                  docLabel={
-                    project.doc ? text.docLabel[project.doc.kind] : undefined
-                  }
-                />
-              ))
-            ) : (
+            {PROJECTS.map((project) => (
               <ProjectCard
-                title={text.fallbackTitle}
-                description={text.fallbackDescription}
-                image={null}
-                link={`https://github.com/${GITHUB_USER}`}
+                key={project.name}
+                title={project.name}
+                description={project.description[lang]}
+                link={project.html_url}
+                badge={project.status ? text.status[project.status] : null}
+                icon={project.icon}
+                demoUrl={project.demo_url}
+                demoLabel={text.demoLabel}
+                docUrl={project.doc?.url}
+                docLabel={project.doc ? text.docLabel[project.doc.kind] : undefined}
+                openLabel={text.openLabel}
               />
-            )}
+            ))}
           </div>
         </section>
         <footer className="mx-auto mt-16 max-w-6xl px-4 pb-10 text-sm text-[var(--muted)] sm:mt-20 sm:px-6">
