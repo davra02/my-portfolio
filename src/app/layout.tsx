@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
+import { Analytics } from "@vercel/analytics/next";
 import { Sora, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -44,6 +45,7 @@ export default async function RootLayout({
         className={`${sora.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
