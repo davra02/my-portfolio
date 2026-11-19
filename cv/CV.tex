@@ -30,6 +30,7 @@
 \usepackage{array}
 \usepackage{setspace}
 \setstretch{0.92}
+\setlist[itemize]{parsep=0pt, partopsep=0pt}
 
 % Real space glyphs and Unicode mappings in the PDF text layer, so ATS parsers
 % don't glue the words of tightly justified lines together (pdfTeX only)
@@ -107,10 +108,23 @@
 \cvsection{Profile}
 
 \noindent
-Software Engineer with 2.5+ years building backend services, real-time distributed systems and CI/CD infrastructure in production, now focused on bringing AI into reliable software. Backend experience across the JVM and Node.js ecosystems — Java, Spring Boot and NestJS — with Docker and SQL/NoSQL data stores. Applied ML/NLP with PyTorch and Transformers (paper published at IberLEF 2026) and rigorous evaluation of LLM-based systems.
+Software Engineer at Liferay with 3 years building backend services, real-time distributed systems and CI/CD in production, now bringing AI into reliable software. Java/OSGi, Spring Boot and NestJS backends with Docker and SQL/NoSQL stores; applied ML/NLP with PyTorch (IberLEF 2026 paper) and rigorous LLM evaluation.
 
 % ── Work Experience ───────────────────────────────────────────────────────────
 \cvsection{Work Experience}
+
+\cventry{Software Engineer}{November 2026 -- Present}{Liferay}{Madrid, Spain}
+
+\begin{itemize}[leftmargin=1.2em, itemsep=1pt, topsep=0pt]
+    \item \textbf{CMS team:} building a new content management module for \textbf{Liferay Portal} (\textbf{Java/OSGi}, \textbf{Tomcat}, \textbf{React}).
+    \item \textbf{Product mindset:} constant sync with the Product team on scope and trade-offs; delivering \textbf{Jira} tickets.
+    \item Daily AI-assisted development with \textbf{Claude Code}, exploiting its agent harness across a large codebase.
+\end{itemize}
+
+\vspace{0.1cm}
+\noindent \tag{Java} \tag{OSGi} \tag{Tomcat} \tag{React} \tag{Jira} \tag{Claude Code}
+
+\vspace{0.25cm}
 
 \cventry{Software Developer}{March 2026 - July 2026}{The Reuse Company · UC3M}{Madrid, Spain}
 
@@ -123,24 +137,21 @@ Software Engineer with 2.5+ years building backend services, real-time distribut
 
 \cventry{Full-Stack Developer}{2023 -- 2025, (last months alongside MSc studies)}{Axion · Telecommunications}{Spain}
 
-\noindent Joined a 3-person team to rebuild from scratch a nationwide real-time monitoring platform for broadcast infrastructure — a project that had failed over 1.5 years of prior attempts. Delivered in 6 months; adopted by 100+ operations users, after all previous versions had been rejected.
+\noindent Rebuilt from scratch, in a 3-person team, a nationwide real-time broadcast monitoring platform after 1.5 years of failed attempts: shipped in 6 months, adopted by \textbf{100+ users}.
 
 \begin{itemize}[leftmargin=1.2em, itemsep=1pt, topsep=3pt]
-    \item \textbf{Performance:} Identified CouchDB (NoSQL) bottleneck, introduced \textbf{Redis Stack} as caching layer (validated via POC), reducing load times \textbf{50--60\%} (10--11s $\rightarrow$ 4--5s). Also enabled HTTP compression at zero infrastructure cost.
-    \item \textbf{CI/CD:} Built GitLab CI/CD pipeline from scratch on own initiative, cutting deployment time from \textbf{5--8h to 40--60 min} (85\%+ reduction), with automated test suites catching real production bugs before release.
-    \item \textbf{Auth microservice:} Expanded an assigned login module into a centralised authentication microservice for the entire organisation, serving \textbf{100+ users} across multiple applications — a decoupled, centralised service design.
-    \item \textbf{Map component:} Designed an Angular + Leaflet map handling thousands of real-time assets.
-    \item \textbf{Mentoring:} Onboarded an intern; built backend/frontend templates with built-in security and CI/CD.
+    \item \textbf{Performance:} POC-validated \textbf{Redis Stack} cache over CouchDB: load times \textbf{-50--60\%} (10--11s $\rightarrow$ 4--5s).
+    \item \textbf{CI/CD:} GitLab pipeline built on own initiative, with automated tests: deploys from \textbf{5--8h to 40--60 min}.
+    \item Turned a login module into an org-wide \textbf{auth microservice} (100+ users); onboarded and mentored an intern.
 \end{itemize}
 
 \vspace{0.1cm}
-\noindent \tag{NestJS} \tag{Node.js} \tag{TypeScript} \tag{Java} \tag{Spring Boot} \tag{PostgreSQL} \tag{CouchDB} \tag{Redis Stack} \tag{Docker} \tag{GitLab CI/CD} \tag{Angular}
+\noindent \tag{NestJS} \tag{TypeScript} \tag{Java} \tag{Spring Boot} \tag{PostgreSQL} \tag{CouchDB} \tag{Redis Stack} \tag{Docker} \tag{GitLab CI/CD} \tag{Angular}
 
 % ── Education ─────────────────────────────────────────────────────────────────
 \cvsection{Education}
-\cventry{MSc in Computer Science and Technology}{2025 -- 2026}{Universidad Carlos III de Madrid}{Madrid, Spain}
-\vspace{0.15cm}
-\cventry{BSc in Software Engineering}{2020 -- 2025}{Universidad de Sevilla}{Seville, Spain}
+\noindent\textbf{\textcolor{primary}{MSc in Computer Science and Technology}} \textcolor{accent}{·} \textit{\textcolor{accent}{Universidad Carlos III de Madrid}} \hfill \textcolor{gray}{\small 2025 -- 2026 · Madrid, Spain}\\[2pt]
+\textbf{\textcolor{primary}{BSc in Software Engineering}} \textcolor{accent}{·} \textit{\textcolor{accent}{Universidad de Sevilla}} \hfill \textcolor{gray}{\small 2020 -- 2025 · Seville, Spain}
 
 % ── Publications & Projects ───────────────────────────────────────────────────
 \cvsection{Publications \& Projects}
@@ -155,16 +166,16 @@ Software Engineer with 2.5+ years building backend services, real-time distribut
 
 \begin{tabularx}{\textwidth}{lX}
     \textbf{\textcolor{primary}{Backend}} &
-    Java · Spring Boot · NestJS · Node.js · REST APIs · Microservices \\[3pt]
+    Java · OSGi · Spring Boot · NestJS · Node.js · REST APIs · Microservices \\[3pt]
 
     \textbf{\textcolor{primary}{Infra \& Data}} &
-    PostgreSQL · MySQL · Redis Stack · CouchDB · Docker · GitLab CI/CD · Linux \\[3pt]
+    PostgreSQL · MySQL · Redis Stack · CouchDB · Docker · Tomcat · GitLab CI/CD · Linux \\[3pt]
 
     \textbf{\textcolor{primary}{AI / ML}} &
-    Python · PyTorch · Hugging Face Transformers · scikit-learn · LLM APIs (Anthropic, Ollama) \\[3pt]
+    Python · PyTorch · Hugging Face Transformers · scikit-learn · LLM APIs · Claude Code \\[3pt]
 
     \textbf{\textcolor{primary}{Other}} &
-    Angular · React/Next.js · JavaScript/TypeScript · Automated testing · Agile \\[3pt]
+    Angular · React/Next.js · JavaScript/TypeScript · Automated testing · Agile · Jira \\[3pt]
 
     \textbf{\textcolor{primary}{Languages}} &
     Spanish (native) · English B2 First (FCE), Cambridge, 2023 \\
